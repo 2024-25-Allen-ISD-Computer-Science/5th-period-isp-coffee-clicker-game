@@ -4,10 +4,10 @@
 
 | Contributor | Role |
 | --- | --- |
-| Kendrick Hill |   |
-| Max Le |   |
-| Mohibullah Meer |   |
-| Isaac Rose |   |
+| Kendrick Hill |research   |
+| Max Le |compiler   |
+| Mohibullah Meer |           |
+| Isaac Rose |coder      |
 
 We aim to make an idol game based on the original cookie-clicker game. In this process, we will have to make up all of the individual aspects of this game. examples of this are; settings, CSS (Cascading Style Sheets), layout, buttons, resources, buildings, upgrades, achievements items, shinies, and general concepts. these general concepts will include the description, text, icon, tags, and cost.
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/UcZhcxPD)
