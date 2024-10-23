@@ -11,13 +11,5 @@ config_version=5
 [application]
 
 config/name="Coffee Clicker"
-run/main_scene="res://prototype_clicker.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
-
-[file_customization]
-
-folder_colors={
-"res://scenes/": "green",
-"res://scripts/": "pink"
-}
