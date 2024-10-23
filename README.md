@@ -5,7 +5,7 @@
 | Contributor | Role |
 | --- | --- |
 | Kendrick Hill |research   |
-| Max Le |compiler   |
+| Max Le |researcher   |
 | Mohibullah Meer |           |
 | Isaac Rose |coder      |
 
