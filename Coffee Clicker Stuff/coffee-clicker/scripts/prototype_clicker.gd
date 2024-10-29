@@ -11,6 +11,12 @@ static var coffeeValue : int = 1
 
 var upgradeCost : int = 50
 
+var upgradeAmount : int = 1
+
+var upgradeCostScale : int = 25
+
+var level : int = 0
+
 @onready var upgrade : Button = get_node("Upgrade")
 
 
@@ -18,6 +24,12 @@ var upgradeCost : int = 50
 func _ready() -> void:
 	update_label_text()
 	update_upgrade_text()
+
+# makes upgrade cost increase more on upgrade
+# makes upgrade amount increase more on upgrade
+func scale_upgrade() -> void:
+	upgradeCostScale *= 4
+	upgradeAmount *= 2
 
 
 # function for when the make coffee button is pressed
@@ -38,16 +50,19 @@ func update_label_text() -> void:
 
 # updates the upgrade cost displayed
 func update_upgrade_text() -> void:
-	upgrade.text = "Upgrade : $ %s" %upgradeCost
+	upgrade.text = ("Upgrade : $ %s" %upgradeCost) + ("\nLevel : %s" %level)
 
 
 # makes your coffee worth more money and upgrades cost more
 func upgrade_coffee() -> void:
-	coffeeValue += 1
+	level += 1
+	coffeeValue += upgradeAmount
 	money -= upgradeCost
-	upgradeCost *= 1.25
+	upgradeCost += upgradeCostScale
 	update_upgrade_text()
 	update_label_text()
+	if level % 10 == 0:
+		scale_upgrade()
 
 
 # upgrades coffee if you have enough money

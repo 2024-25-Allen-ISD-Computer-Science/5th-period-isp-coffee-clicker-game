@@ -56,7 +56,8 @@ offset_right = -30.0
 offset_bottom = 45.0
 grow_horizontal = 0
 grow_vertical = 2
-text = "Upgrade : <value>"
+text = "Upgrade : <value>
+Level: <value>"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Upgrade" to="." method="_on_upgrade_pressed"]
