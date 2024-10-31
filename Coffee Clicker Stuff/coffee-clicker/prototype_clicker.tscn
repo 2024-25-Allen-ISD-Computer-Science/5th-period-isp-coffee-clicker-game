@@ -1,6 +1,66 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfmr7rns8wk2u"]
+[gd_scene load_steps=17 format=3 uid="uid://cfmr7rns8wk2u"]
 
 [ext_resource type="Script" path="res://scripts/prototype_clicker.gd" id="1_457p2"]
+[ext_resource type="Texture2D" uid="uid://dvfrowllhnrvh" path="res://Assets/CoffeePotSpriteSheet.png" id="2_a8c04"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fld2h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v1d5j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkvn5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ymm6g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mn0r6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l4n1n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_53ddw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_77eia"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3iqsy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_poxa3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p0pxb"]
+
+[sub_resource type="Animation" id="Animation_snro6"]
+resource_name = "coffee_pot_click"
+length = 1.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 5, 6, 7, 8, 10, 11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_mh0us"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y87yw"]
+_data = {
+"RESET": SubResource("Animation_mh0us"),
+"coffee_pot_click": SubResource("Animation_snro6")
+}
 
 [node name="PrototypeClicker" type="Control" node_paths=PackedStringArray("label")]
 layout_mode = 3
@@ -28,6 +88,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="."]
+visibility_layer = 513
 custom_minimum_size = Vector2(160, 160)
 layout_mode = 1
 anchors_preset = 8
@@ -35,13 +96,36 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -116.0
-offset_top = -108.0
-offset_right = 116.0
-offset_bottom = 108.0
+offset_left = -116.352
+offset_top = -107.898
+offset_right = 137.648
+offset_bottom = 125.102
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fld2h")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_v1d5j")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jkvn5")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ymm6g")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_mn0r6")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_l4n1n")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_53ddw")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_77eia")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3iqsy")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_poxa3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p0pxb")
 text = "Make Coffee"
+
+[node name="Coffee_Pot" type="Sprite2D" parent="."]
+position = Vector2(593, 299)
+scale = Vector2(0.929688, 0.929688)
+texture = ExtResource("2_a8c04")
+hframes = 4
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Coffee_Pot"]
+libraries = {
+"": SubResource("AnimationLibrary_y87yw")
+}
 
 [node name="Upgrade" type="Button" parent="."]
 layout_mode = 1

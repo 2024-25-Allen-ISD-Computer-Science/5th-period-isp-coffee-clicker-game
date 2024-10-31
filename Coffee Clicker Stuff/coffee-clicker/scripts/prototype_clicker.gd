@@ -35,6 +35,7 @@ func scale_upgrade() -> void:
 # function for when the make coffee button is pressed
 func _on_button_pressed() -> void:
 	make_coffee()
+	$Coffee_Pot/AnimationPlayer.play("coffee_pot_click")
 
 
 # updates your money
