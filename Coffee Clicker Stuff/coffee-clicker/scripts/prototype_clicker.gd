@@ -9,27 +9,20 @@ var money : int = 0
 
 static var coffeeValue : int = 1
 
-var upgradeCost : int = 50
-
-var upgradeAmount : int = 1
-
-var upgradeCostScale : int = 25
-
 var level : int = 0
 
-@onready var upgrade : Button = get_node("Upgrade")
+var beans : Array = []
 
+@onready var upgrade_excelsa : Button = get_node("Upgrade_Excelsa")
+
+var excelsa
 
 # calls on startup
 func _ready() -> void:
-	update_label_text()
-	update_upgrade_text()
-
-# makes upgrade cost increase more on upgrade
-# makes upgrade amount increase more on upgrade
-func scale_upgrade() -> void:
-	upgradeCostScale *= 4
-	upgradeAmount *= 2
+	excelsa = Bean.new("Excelsa Bean", 1, 1, 50, 50, 1)
+	beans.append(excelsa)
+	update_money_text()
+	update_upgrade_text(excelsa)
 
 
 # function for when the make coffee button is pressed
@@ -41,32 +34,31 @@ func _on_button_pressed() -> void:
 # updates your money
 func make_coffee() -> void:
 	money += coffeeValue
-	update_label_text()
+	update_money_text()
 
 
 # updates the amount of money displayed
-func update_label_text() -> void:
+func update_money_text() -> void:
 	label.text = "Money : $ %s" %money
 
 
 # updates the upgrade cost displayed
-func update_upgrade_text() -> void:
-	upgrade.text = ("Upgrade : $ %s" %upgradeCost) + ("\nLevel : %s" %level)
+func update_upgrade_text(bean) -> void:
+	upgrade_excelsa.text = ("Upgrade : $ %s" %bean.upgrade_cost) + ("\nLevel : %s" %bean.level)
 
 
-# makes your coffee worth more money and upgrades cost more
-func upgrade_coffee() -> void:
-	level += 1
-	coffeeValue += upgradeAmount
-	money -= upgradeCost
-	upgradeCost += upgradeCostScale
-	update_upgrade_text()
-	update_label_text()
-	if level % 10 == 0:
-		scale_upgrade()
+# updates the value of your coffee
+func update_coffee_value() -> void:
+	coffeeValue = 0
+	for coffee_bean in beans:
+		coffeeValue += coffee_bean.sell_value
+	update_upgrade_text(excelsa)
+	update_money_text()
 
 
-# upgrades coffee if you have enough money
-func _on_upgrade_pressed() -> void:
-	if (money >= upgradeCost):
-		upgrade_coffee()
+# upgrades excelsa bean sell_value if you have enough money
+func _on_upgrade_excelsa_pressed() -> void:
+	if (money >= excelsa.upgrade_cost):
+		money -= excelsa.upgrade_cost
+		excelsa.upgrade_bean()
+		update_coffee_value()

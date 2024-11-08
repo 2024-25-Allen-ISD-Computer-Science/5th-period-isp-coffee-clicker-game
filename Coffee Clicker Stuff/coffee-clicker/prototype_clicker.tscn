@@ -25,6 +25,21 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p0pxb"]
 
+[sub_resource type="Animation" id="Animation_mh0us"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_snro6"]
 resource_name = "coffee_pot_click"
 length = 1.05
@@ -39,21 +54,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 5, 6, 7, 8, 10, 11, 12]
-}
-
-[sub_resource type="Animation" id="Animation_mh0us"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y87yw"]
@@ -127,7 +127,7 @@ libraries = {
 "": SubResource("AnimationLibrary_y87yw")
 }
 
-[node name="Upgrade" type="Button" parent="."]
+[node name="Upgrade_Excelsa" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -140,9 +140,19 @@ offset_right = -30.0
 offset_bottom = 45.0
 grow_horizontal = 0
 grow_vertical = 2
-text = "Upgrade : <value>
+text = "Excelsa
+Current Value: <value>
+Upgrade : <value>
 Level: <value>"
 
+[node name="Unlock_Robusta" type="Button" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 37.0
+offset_right = 253.0
+offset_bottom = 110.0
+text = "Unlock Robusta Bean"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Upgrade" to="." method="_on_upgrade_pressed"]
-[connection signal="pressed" from="Upgrade" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Upgrade_Excelsa" to="." method="_on_upgrade_excelsa_pressed"]
+[connection signal="pressed" from="Upgrade_Excelsa" to="." method="_on_button_2_pressed"]
