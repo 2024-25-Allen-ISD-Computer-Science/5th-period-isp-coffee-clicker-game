@@ -2,19 +2,19 @@ class_name Bean
 extends Node2D
 
 # bean properties
-@export var bean_name : String
+@export var Name : String
 @export var sell_value : int
 @export var upgrade_value : int
 @export var upgrade_cost : int
 @export var upgrade_cost_scale : int
 @export var level : int
 
-func _init(bean : String, value : int, upval : int, upcost : int, upcostscale : int, lvl : int):
-	bean_name = bean
-	sell_value = value
-	upgrade_value = upval
-	upgrade_cost = upcost
-	upgrade_cost_scale = upcostscale
+func _init(bean_name : String, bean_value : int, bean_upgrade_value : int, bean_upgrade_cost : int, bean_upgrade_cost_scale : int, lvl : int):
+	Name = bean_name
+	sell_value = bean_value
+	upgrade_value = bean_upgrade_value
+	upgrade_cost = bean_upgrade_cost
+	upgrade_cost_scale = bean_upgrade_cost_scale
 	level = lvl
 
 func upgrade_bean():

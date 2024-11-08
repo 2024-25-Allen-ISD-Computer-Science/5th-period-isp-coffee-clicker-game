@@ -134,15 +134,15 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -286.0
-offset_top = -45.0
-offset_right = -30.0
-offset_bottom = 45.0
+offset_left = -283.0
+offset_top = -185.0
+offset_right = -27.0
+offset_bottom = -85.0
 grow_horizontal = 0
 grow_vertical = 2
 text = "Excelsa
 Current Value: <value>
-Upgrade : <value>
+Upgrade: <value>
 Level: <value>"
 
 [node name="Unlock_Robusta" type="Button" parent="."]
@@ -151,8 +151,19 @@ offset_left = 39.0
 offset_top = 37.0
 offset_right = 253.0
 offset_bottom = 110.0
-text = "Unlock Robusta Bean"
+text = "Unlock Robusta Bean
+$500"
+
+[node name="Upgrade_Robusta" type="Button" parent="."]
+layout_mode = 0
+offset_left = 869.0
+offset_top = 241.0
+offset_right = 1126.0
+offset_bottom = 342.0
+text = "Locked"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Upgrade_Excelsa" to="." method="_on_upgrade_excelsa_pressed"]
 [connection signal="pressed" from="Upgrade_Excelsa" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Unlock_Robusta" to="." method="_on_unlock_robusta_pressed"]
+[connection signal="pressed" from="Upgrade_Robusta" to="." method="_on_upgrade_robusta_pressed"]
