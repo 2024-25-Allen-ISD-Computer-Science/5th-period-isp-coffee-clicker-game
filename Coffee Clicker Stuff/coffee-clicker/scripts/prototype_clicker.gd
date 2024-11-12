@@ -97,5 +97,4 @@ func _on_upgrade_excelsa_pressed() -> void:
 
 
 func _on_upgrade_robusta_pressed() -> void:
-	if robusta_unlocked:
-		upgrade_bean(upgrade_robusta, robusta)
+	upgrade_bean(upgrade_robusta, robusta)
