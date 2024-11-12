@@ -163,7 +163,7 @@ offset_bottom = 342.0
 text = "Locked"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Upgrade_Excelsa" to="." method="_on_upgrade_excelsa_pressed"]
 [connection signal="pressed" from="Upgrade_Excelsa" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Upgrade_Excelsa" to="." method="_on_upgrade_excelsa_pressed"]
 [connection signal="pressed" from="Unlock_Robusta" to="." method="_on_unlock_robusta_pressed"]
 [connection signal="pressed" from="Upgrade_Robusta" to="." method="_on_upgrade_robusta_pressed"]
