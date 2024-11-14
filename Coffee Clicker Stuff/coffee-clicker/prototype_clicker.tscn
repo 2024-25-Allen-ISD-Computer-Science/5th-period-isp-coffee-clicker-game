@@ -103,7 +103,7 @@ anchor_bottom = 0.16
 offset_left = 0.447937
 offset_top = 0.0240002
 offset_right = 0.192017
-offset_bottom = 0.319992
+offset_bottom = 0.32
 grow_horizontal = 0
 theme_type_variation = &"HeaderLarge"
 text = "Money : <value>"
@@ -115,14 +115,14 @@ visibility_layer = 513
 custom_minimum_size = Vector2(160, 160)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.424
-anchor_top = 0.346
-anchor_right = 0.618
-anchor_bottom = 0.645
-offset_left = -56.448
-offset_top = -24.208
-offset_right = -46.936
-offset_bottom = -13.96
+anchor_left = 0.396
+anchor_top = 0.358
+anchor_right = 0.598
+anchor_bottom = 0.673
+offset_left = -0.192017
+offset_top = 0.0159912
+offset_right = 0.103943
+offset_bottom = -0.104034
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fld2h")
@@ -139,7 +139,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_p0pxb")
 
 [node name="Coffee_Pot" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(559, 294)
+position = Vector2(576, 320)
 scale = Vector2(0.828125, 0.859375)
 texture = ExtResource("2_a8c04")
 hframes = 4
@@ -149,27 +149,6 @@ vframes = 4
 libraries = {
 "": SubResource("AnimationLibrary_y87yw")
 }
-
-[node name="Upgrade_Excelsa" type="Button" parent="."]
-texture_filter = 1
-custom_minimum_size = Vector2(-0.13, 0)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.701
-anchor_top = 0.173
-anchor_right = 0.979
-anchor_bottom = 0.346
-offset_left = 0.447937
-offset_top = -0.104004
-offset_right = 0.192017
-offset_bottom = -0.208008
-grow_horizontal = 0
-grow_vertical = 2
-text = "Excelsa
-Current Value: <value>
-Upgrade: <value>
-Level: <value>"
-alignment = 0
 
 [node name="Unlock" type="Button" parent="."]
 texture_filter = 1
@@ -185,6 +164,27 @@ offset_right = 0.0639954
 offset_bottom = 0.295998
 text = "Unlock Robusta Bean
 $500"
+
+[node name="Upgrade_Excelsa" type="Button" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(-0.13, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.701
+anchor_top = 0.173
+anchor_right = 0.979
+anchor_bottom = 0.346
+offset_left = 0.447937
+offset_top = -0.104004
+offset_right = 0.192017
+offset_bottom = -0.207993
+grow_horizontal = 0
+grow_vertical = 2
+text = "Excelsa
+Current Value: <value>
+Upgrade: <value>
+Level: <value>"
+alignment = 0
 
 [node name="Upgrade_Robusta" type="Button" parent="."]
 texture_filter = 1
@@ -214,7 +214,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_t8xqe")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Unlock" to="." method="_on_unlock_pressed"]
 [connection signal="pressed" from="Upgrade_Excelsa" to="." method="_on_upgrade_excelsa_pressed"]
 [connection signal="pressed" from="Upgrade_Excelsa" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="Unlock" to="." method="_on_unlock_pressed"]
 [connection signal="pressed" from="Upgrade_Robusta" to="." method="_on_upgrade_robusta_pressed"]
