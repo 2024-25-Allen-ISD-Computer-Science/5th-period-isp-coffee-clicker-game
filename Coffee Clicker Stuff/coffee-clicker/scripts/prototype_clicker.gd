@@ -5,18 +5,29 @@ extends Control
 @export var label : Label
 var money : int = 0
 static var coffeeValue : int = 1
-var beans : Array
-var icons : Array
-var upgrades : Array
 var unlock_cooldown : int = 0
 var beandex : int = 1 # we begin w/ excelsa, so it's not counted in the unlock progression
-@onready var upgrade_excelsa : Button = get_node("Upgrade_Excelsa")
-@onready var upgrade_robusta : Button = get_node("Upgrade_Robusta")
 @onready var unlock : Button = get_node("Unlock")
-@onready var excelsa_icon : Sprite2D = get_node("Excelsa_Icon")
-@onready var robusta_icon : Sprite2D = get_node("Robusta_Icon")
+
+#>---BEAN VARS---<#
+var beans : Array
 var excelsa
 var robusta
+#>---BEAN VARS---<#
+
+#>---UPGRADE VARS---<#
+var upgrades : Array
+@onready var upgrade_excelsa : Button = get_node("Upgrade_Excelsa")
+@onready var upgrade_robusta : Button = get_node("Upgrade_Robusta")
+#>---UPGRADE VARS---<#
+
+#>---ICON VARS---<#
+var icons : Array
+@onready var excelsa_icon : Sprite2D = get_node("Excelsa_Icon")
+@onready var robusta_icon : Sprite2D = get_node("Robusta_Icon")
+#>---ICON VARS---<#
+
+
 
 # calls on startup
 func _ready() -> void:
@@ -32,8 +43,6 @@ func _process(delta) -> void:
 	update_money_text()
 	update_unlock_text()
 	update_upgrade_text()
-
-
 
 #>---INTERACTION FUNCTIONS---<#
 # function for when the make coffee button is pressed
@@ -54,7 +63,6 @@ func _on_unlock_pressed() -> void:
 			unlock_cooldown = 60
 #>---INTERACTION FUNCTIONS---<#
 
-
 #>---MONEY FUNCTIONS---<#
 # upgrades excelsa bean sell_value if you have enough money
 func upgrade_bean(bean) -> void:
@@ -65,8 +73,6 @@ func upgrade_bean(bean) -> void:
 func make_coffee() -> void:
 	money += coffeeValue
 #>---MONEY FUNCTIONS---<#
-
-
 
 #>---UPDATE FUNCTIONS---<#
 # updates the value of your coffee
