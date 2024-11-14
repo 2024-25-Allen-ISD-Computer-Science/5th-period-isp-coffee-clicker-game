@@ -3,19 +3,23 @@ extends Node2D
 
 # bean properties
 @export var Name : String
+@export var unlocked : bool
+@export var unlock_value : int
 @export var sell_value : int
 @export var upgrade_value : int
 @export var upgrade_cost : int
 @export var upgrade_cost_scale : int
 @export var level : int
 
-func _init(bean_name : String, bean_value : int, bean_upgrade_value : int, bean_upgrade_cost : int, bean_upgrade_cost_scale : int, lvl : int):
-	Name = bean_name
-	sell_value = bean_value
-	upgrade_value = bean_upgrade_value
-	upgrade_cost = bean_upgrade_cost
-	upgrade_cost_scale = bean_upgrade_cost_scale
-	level = lvl
+func _init(Name : String, unlocked : bool, unlock_value : int, sell_value : int, upgrade_value : int, upgrade_cost : int, upgrade_cost_scale : int, level : int):
+	self.Name = Name
+	self.unlocked = unlocked
+	self.unlock_value = unlock_value
+	self.sell_value = sell_value
+	self.upgrade_value = upgrade_value
+	self.upgrade_cost = upgrade_cost
+	self.upgrade_cost_scale = upgrade_cost_scale
+	self.level = level
 
 func upgrade_bean():
 	sell_value += upgrade_value
