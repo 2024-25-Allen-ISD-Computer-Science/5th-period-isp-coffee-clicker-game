@@ -1,7 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://cfmr7rns8wk2u"]
+[gd_scene load_steps=21 format=3 uid="uid://cfmr7rns8wk2u"]
 
 [ext_resource type="Script" path="res://scripts/prototype_clicker.gd" id="1_457p2"]
 [ext_resource type="Texture2D" uid="uid://dvfrowllhnrvh" path="res://Assets/CoffeePotSpriteSheet.png" id="2_a8c04"]
+[ext_resource type="Texture2D" uid="uid://crb4k7y2rcjkp" path="res://Assets/buck mone.png" id="2_ij18e"]
+[ext_resource type="Texture2D" uid="uid://c2g0cqkibwgsg" path="res://Assets/excelsa bean.png" id="3_hmlnv"]
 [ext_resource type="Texture2D" uid="uid://dbgho6fmmfeno" path="res://Assets/Placeholder.png" id="3_t8xqe"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fld2h"]
@@ -35,10 +37,22 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.00108495),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_a8c04")]
 }
 
 [sub_resource type="Animation" id="Animation_snro6"]
@@ -64,7 +78,7 @@ step = 0.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -96,33 +110,32 @@ texture_filter = 1
 custom_minimum_size = Vector2(160, 80)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.701
-anchor_top = 0.037
-anchor_right = 0.979
-anchor_bottom = 0.16
-offset_left = 0.447937
-offset_top = 0.0240002
-offset_right = 0.192017
-offset_bottom = 0.32
+anchor_left = 0.790799
+anchor_top = 0.0493827
+anchor_right = 0.980903
+anchor_bottom = 0.17284
 grow_horizontal = 0
 theme_type_variation = &"HeaderLarge"
 text = "Money : <value>"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Money_Icon" type="Sprite2D" parent="Label"]
+texture_filter = 1
+position = Vector2(-50.0001, 42)
+scale = Vector2(3.03906, 3.03906)
+texture = ExtResource("2_ij18e")
 
 [node name="Button" type="Button" parent="."]
 visibility_layer = 513
 custom_minimum_size = Vector2(160, 160)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.396
-anchor_top = 0.358
-anchor_right = 0.598
-anchor_bottom = 0.673
-offset_left = -0.192017
-offset_top = 0.0159912
-offset_right = 0.103943
-offset_bottom = -0.104034
+anchor_left = 0.401042
+anchor_top = 0.384259
+anchor_right = 0.577257
+anchor_bottom = 0.662037
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fld2h")
@@ -136,16 +149,17 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_77eia")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3iqsy")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_poxa3")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_p0pxb")
+metadata/_edit_use_anchors_ = true
 
-[node name="Coffee_Pot" type="Sprite2D" parent="."]
+[node name="Coffee_Pot" type="Sprite2D" parent="Button"]
 texture_filter = 1
-position = Vector2(576, 320)
+position = Vector2(95, 69)
 scale = Vector2(0.828125, 0.859375)
 texture = ExtResource("2_a8c04")
 hframes = 4
 vframes = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Coffee_Pot"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Button/Coffee_Pot"]
 libraries = {
 "": SubResource("AnimationLibrary_y87yw")
 }
@@ -165,72 +179,80 @@ offset_bottom = 0.295998
 text = "Unlock Robusta Bean
 $500"
 
-[node name="Upgrade_Excelsa" type="Button" parent="."]
-texture_filter = 1
-custom_minimum_size = Vector2(-0.13, 0)
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.701
-anchor_top = 0.173
-anchor_right = 0.979
-anchor_bottom = 0.346
-offset_left = 0.447937
-offset_top = -0.104004
-offset_right = 0.192017
-offset_bottom = -0.207993
-grow_horizontal = 0
-grow_vertical = 2
+anchor_left = 0.708333
+anchor_top = 0.242284
+anchor_right = 0.969618
+anchor_bottom = 0.878086
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_direction = 1
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Upgrade_Excelsa" type="Button" parent="ScrollContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(-0.13, 0)
+layout_mode = 2
 text = "Excelsa
 Current Value: <value>
 Upgrade: <value>
 Level: <value>"
 alignment = 0
 
-[node name="Upgrade_Robusta" type="Button" parent="."]
+[node name="Excelsa_Upgrade_Icon" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Upgrade_Excelsa"]
 texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.701
-anchor_top = 0.358
-anchor_right = 0.979
-anchor_bottom = 0.531
-offset_left = 0.447937
-offset_top = 0.0159912
-offset_right = 0.192017
-offset_bottom = -0.0880127
+position = Vector2(243, 48)
+scale = Vector2(2, 2)
+texture = ExtResource("3_hmlnv")
+
+[node name="Upgrade_Robusta" type="Button" parent="ScrollContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
 text = "Locked"
 alignment = 0
 
-[node name="Upgrade_Arabica" type="Button" parent="."]
-layout_mode = 0
-offset_left = 808.0
-offset_top = 352.0
-offset_right = 1128.0
-offset_bottom = 464.0
+[node name="Robusta_Upgrade_Icon" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Upgrade_Robusta"]
+texture_filter = 1
+position = Vector2(243, 49)
+scale = Vector2(2, 2)
+texture = ExtResource("3_t8xqe")
+
+[node name="Upgrade_Arabica" type="Button" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
 text = "Locked"
 alignment = 0
 
-[node name="Excelsa_Upgrade_Icon" type="Sprite2D" parent="."]
+[node name="Arabica_Upgrade_Icon" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Upgrade_Arabica"]
 texture_filter = 1
-position = Vector2(1072, 168)
+position = Vector2(243, 49)
 scale = Vector2(2, 2)
 texture = ExtResource("3_t8xqe")
 
-[node name="Robusta_Upgrade_Icon" type="Sprite2D" parent="."]
+[node name="Upgrade_Liberica" type="Button" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+text = "Locked"
+alignment = 0
+
+[node name="Liberica_Upgrade_Icon" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Upgrade_Liberica"]
 texture_filter = 1
-position = Vector2(1072, 288)
+position = Vector2(243, 49)
 scale = Vector2(2, 2)
 texture = ExtResource("3_t8xqe")
 
-[node name="Arabica_Upgrade_Icon" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(1072, 408)
-scale = Vector2(2.111, 2)
-texture = ExtResource("3_t8xqe")
-
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Unlock_Bean" to="." method="_on_unlock_pressed"]
-[connection signal="pressed" from="Upgrade_Excelsa" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="Upgrade_Excelsa" to="." method="_on_upgrade_excelsa_pressed"]
-[connection signal="pressed" from="Upgrade_Robusta" to="." method="_on_upgrade_robusta_pressed"]
-[connection signal="pressed" from="Upgrade_Arabica" to="." method="_on_upgrade_arabica_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Excelsa" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Excelsa" to="." method="_on_upgrade_excelsa_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Robusta" to="." method="_on_upgrade_robusta_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Arabica" to="." method="_on_upgrade_arabica_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Liberica" to="." method="_on_upgrade_liberica_pressed"]

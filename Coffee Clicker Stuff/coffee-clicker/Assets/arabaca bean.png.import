@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw2yr46v2mg0j"
-path="res://.godot/imported/CoffeePotHighlight.png-361393e6d33f758eeca9d7f4f3b074b0.ctex"
+uid="uid://h20m105ycloo"
+path="res://.godot/imported/arabaca bean.png-1e2476ac92c50474fe5f29de67096fc4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CoffeePotHighlight.png"
-dest_files=["res://.godot/imported/CoffeePotHighlight.png-361393e6d33f758eeca9d7f4f3b074b0.ctex"]
+source_file="res://Assets/arabaca bean.png"
+dest_files=["res://.godot/imported/arabaca bean.png-1e2476ac92c50474fe5f29de67096fc4.ctex"]
 
 [params]
 
