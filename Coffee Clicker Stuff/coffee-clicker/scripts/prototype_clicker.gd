@@ -4,53 +4,140 @@ extends Control
 
 # variable setup
 @export var label : Label
-
-var money : int = 0
-
+var money : int = 10000
 static var coffeeValue : int = 1
+var unlock_cooldown : int = 0
+var beandex : int = 1 # we begin w/ excelsa, so it's not counted in the unlock progression
+@onready var unlock : Button = get_node("Unlock_Bean")
 
-var upgradeCost : int = 50
 
-@onready var upgrade : Button = get_node("Upgrade")
+#>---BEAN VARS---<#
+var beans : Array
+var excelsa
+var robusta
+var arabica
+#>---BEAN VARS---<#
+
+
+#>---UPGRADE VARS---<#
+var upgrades : Array
+@onready var upgrade_excelsa : Button = get_node("Upgrade_Excelsa")
+@onready var upgrade_robusta : Button = get_node("Upgrade_Robusta")
+@onready var upgrade_arabica : Button = get_node("Upgrade_Arabica")
+#>---UPGRADE VARS---<#
+
+
+#>---ICON VARS---<#
+var icons : Array
+@onready var excelsa_icon : Sprite2D = get_node("Excelsa_Upgrade_Icon")
+@onready var robusta_icon : Sprite2D = get_node("Robusta_Upgrade_Icon")
+@onready var arabica_icon : Sprite2D = get_node("Arabica_Upgrade_Icon")
+#>---ICON VARS---<#
 
 
 # calls on startup
 func _ready() -> void:
-	update_label_text()
+	excelsa = Bean.new("Excelsa", true, 0, 1, 1, 50, 25, 1)
+	robusta = Bean.new("Robusta", false, 500, 5, 5, 200, 100, 1)
+	arabica = Bean.new("Arabica", false, 2000, 10, 10, 500, 250, 1)
+	beans = [excelsa, robusta, arabica]
+	icons = [excelsa_icon, robusta_icon, arabica_icon]
+	upgrades = [upgrade_excelsa, upgrade_robusta, upgrade_arabica]
+
+
+# frame by frame processing
+func _process(delta) -> void:
+	update_coffee_value()
+	update_money_text()
+	update_unlock_text()
 	update_upgrade_text()
 
 
+#>---INTERACTION FUNCTIONS---<#
 # function for when the make coffee button is pressed
 func _on_button_pressed() -> void:
 	make_coffee()
+	$Coffee_Pot/AnimationPlayer.play("coffee_pot_click")
+	update_money_text()
+
+
+func _on_upgrade_excelsa_pressed() -> void:
+	upgrade_bean(excelsa)
+	update_text()
+
+
+func _on_upgrade_robusta_pressed() -> void:
+	upgrade_bean(robusta)
+	update_text()
+
+func _on_upgrade_arabica_pressed() -> void:
+	upgrade_bean(arabica)
+	update_text()
+
+# unlocks beans
+func _on_unlock_pressed() -> void:
+	if beandex < beans.size():
+		if (money >= beans[beandex].unlock_value):
+			beans[beandex].unlocked = true
+			money -= beans[beandex].unlock_value
+			beandex += 1
+			update_text()
+#>---INTERACTION FUNCTIONS---<#
+
+
+#>---MONEY FUNCTIONS---<#
+# upgrades bean sell_value if you have enough money
+func upgrade_bean(bean) -> void:
+	if bean.unlocked && money >= bean.upgrade_cost:
+		money -= bean.upgrade_cost
+		bean.upgrade_bean()
 
 
 # updates your money
 func make_coffee() -> void:
 	money += coffeeValue
-	update_label_text()
+#>---MONEY FUNCTIONS---<#
+
+
+#>---UPDATE FUNCTIONS---<#
+# updates the value of your coffee
+func update_text() -> void:
+	update_coffee_value()
+	update_money_text()
+	update_unlock_text()
+	update_upgrade_text()
+	
+func update_coffee_value() -> void:
+	coffeeValue = 0
+	for bean in beans:
+		if bean.unlocked:
+			coffeeValue += bean.sell_value
 
 
 # updates the amount of money displayed
-func update_label_text() -> void:
-	label.text = "Money : $ %s" %money
+func update_money_text() -> void:
+	label.text = "Money: $%s" %money
+
+
+# updates unlock text
+func update_unlock_text() -> void:
+	if beandex >= beans.size():
+		unlock.text = "All beans unlocked!"
+	else:
+		unlock.text = ("Unlock %s Bean\n$%s" %[beans[beandex].Name, beans[beandex].unlock_value])
 
 
 # updates the upgrade cost displayed
 func update_upgrade_text() -> void:
-	upgrade.text = "Upgrade : $ %s" %upgradeCost
+	for index in beandex:
+		upgrades[index].text = "%s\nCurrent Value: $%s\nUpgrade: $%s\nLevel: %s" %[beans[index].Name, beans[index].sell_value, beans[index].upgrade_cost, beans[index].level]
+#>---UPDATE FUNCTIONS---<#
 
 
-# makes your coffee worth more money and upgrades cost more
-func upgrade_coffee() -> void:
-	coffeeValue += 1
-	money -= upgradeCost
-	upgradeCost *= 1.25
-	update_upgrade_text()
-	update_label_text()
 
-
-# upgrades coffee if you have enough money
-func _on_upgrade_pressed() -> void:
-	if (money >= upgradeCost):
-		upgrade_coffee()
+# Next ideas:
+	# The upgrade buttons are all identical, aside from their position and the bean they relate to
+	# We could make a class for upgrade buttons, that each have a specific ID number, like with the beans
+	# From there upgrading beans could be made more versatile, as
+		# A function in prototype_clicker that utilizes the ID of the button
+		# A function in the upgrade button class that goes directly to their corresponding bean
