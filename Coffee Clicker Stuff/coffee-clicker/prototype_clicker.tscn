@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://cfmr7rns8wk2u"]
+[gd_scene load_steps=22 format=3 uid="uid://cfmr7rns8wk2u"]
 
 [ext_resource type="Script" path="res://scripts/prototype_clicker.gd" id="1_457p2"]
+[ext_resource type="Texture2D" uid="uid://bes05xamqkoy" path="res://Assets/Background.png" id="2_1sek0"]
 [ext_resource type="Texture2D" uid="uid://dvfrowllhnrvh" path="res://Assets/CoffeePotSpriteSheet.png" id="2_a8c04"]
 [ext_resource type="Texture2D" uid="uid://crb4k7y2rcjkp" path="res://Assets/buck mone.png" id="2_ij18e"]
 [ext_resource type="Texture2D" uid="uid://c2g0cqkibwgsg" path="res://Assets/excelsa bean.png" id="3_hmlnv"]
@@ -105,6 +106,12 @@ grow_vertical = 2
 script = ExtResource("1_457p2")
 label = NodePath("Label")
 
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(577.889, 326.5)
+scale = Vector2(0.901389, 0.901389)
+texture = ExtResource("2_1sek0")
+
 [node name="Label" type="Label" parent="."]
 texture_filter = 1
 custom_minimum_size = Vector2(160, 80)
@@ -129,13 +136,13 @@ texture = ExtResource("2_ij18e")
 
 [node name="Button" type="Button" parent="."]
 visibility_layer = 513
-custom_minimum_size = Vector2(160, 160)
+custom_minimum_size = Vector2(160, 140)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.401042
-anchor_top = 0.384259
-anchor_right = 0.577257
-anchor_bottom = 0.662037
+anchor_left = 0.453125
+anchor_top = 0.334877
+anchor_right = 0.592014
+anchor_bottom = 0.557099
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fld2h")
@@ -153,8 +160,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Coffee_Pot" type="Sprite2D" parent="Button"]
 texture_filter = 1
-position = Vector2(95, 69)
-scale = Vector2(0.828125, 0.859375)
+position = Vector2(74, 58)
+scale = Vector2(0.65625, 0.681014)
 texture = ExtResource("2_a8c04")
 hframes = 4
 vframes = 4
@@ -251,8 +258,8 @@ texture = ExtResource("3_t8xqe")
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Unlock_Bean" to="." method="_on_unlock_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Excelsa" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Excelsa" to="." method="_on_upgrade_excelsa_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Excelsa" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Robusta" to="." method="_on_upgrade_robusta_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Arabica" to="." method="_on_upgrade_arabica_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Liberica" to="." method="_on_upgrade_liberica_pressed"]

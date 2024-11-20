@@ -3,7 +3,7 @@ extends Control
 
 # variable setup
 @export var label : Label
-var money : int = 100000
+var money : int = 1000000
 static var coffeeValue : int = 1
 var unlock_cooldown : int = 0
 var beandex : int = 1 # we begin w/ excelsa, so it's not counted in the unlock progression
@@ -51,8 +51,8 @@ var upgrade_sprites : Array
 func _ready() -> void:
 	excelsa = Bean.new("Excelsa", true, 0, 1, 1, 50, 25)
 	robusta = Bean.new("Robusta", false, 500, 5, 5, 200, 100)
-	arabica = Bean.new("Arabica", false, 2000, 10, 10, 500, 250)
-	liberica = Bean.new("Liberica", false, 10000, 25, 25, 2500, 1250)
+	arabica = Bean.new("Arabica", false, 10000, 10, 10, 500, 250)
+	liberica = Bean.new("Liberica", false, 250000, 50, 50, 2500, 1250)
 	beans = [excelsa, robusta, arabica, liberica]
 	upgrade_icons = [excelsa_upgrade_icon, robusta_upgrade_icon, arabica_upgrade_icon, liberica_upgrade_icon]
 	upgrade_sprites = [excelsa_upgrade_sprite, robusta_upgrade_sprite, arabica_upgrade_sprite, liberica_upgrade_sprite]
