@@ -11,6 +11,7 @@ extends Node2D
 @export var upgrade_cost_scale : int
 @export var level : int
 
+# initialization
 func _init(Name : String, unlocked : bool, unlock_value : int, sell_value : int, upgrade_value : int, upgrade_cost : int, upgrade_cost_scale : int, level : int = 1):
 	self.Name = Name
 	self.unlocked = unlocked
@@ -21,6 +22,7 @@ func _init(Name : String, unlocked : bool, unlock_value : int, sell_value : int,
 	self.upgrade_cost_scale = upgrade_cost_scale
 	self.level = level
 
+# upgrade function for bean
 func upgrade_bean():
 	sell_value += upgrade_value
 	upgrade_cost += upgrade_cost_scale
