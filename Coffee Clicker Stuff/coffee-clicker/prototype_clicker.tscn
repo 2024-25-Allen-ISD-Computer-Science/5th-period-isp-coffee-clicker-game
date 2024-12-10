@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cfmr7rns8wk2u"]
+[gd_scene load_steps=23 format=3 uid="uid://cfmr7rns8wk2u"]
 
 [ext_resource type="Script" path="res://scripts/prototype_clicker.gd" id="1_457p2"]
 [ext_resource type="Texture2D" uid="uid://bes05xamqkoy" path="res://Assets/Background.png" id="2_1sek0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://crb4k7y2rcjkp" path="res://Assets/buck mone.png" id="2_ij18e"]
 [ext_resource type="Texture2D" uid="uid://c2g0cqkibwgsg" path="res://Assets/excelsa bean.png" id="3_hmlnv"]
 [ext_resource type="Texture2D" uid="uid://dbgho6fmmfeno" path="res://Assets/Placeholder.png" id="3_t8xqe"]
+[ext_resource type="Texture2D" uid="uid://4oeutk26nubr" path="res://Assets/Dark oak Variation 1.png" id="5_yfybp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fld2h"]
 
@@ -189,17 +190,17 @@ $500"
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.708333
-anchor_top = 0.242284
-anchor_right = 0.969618
-anchor_bottom = 0.878086
+anchor_left = 0.740451
+anchor_top = 0.169753
+anchor_right = 1.00174
+anchor_bottom = 1.00309
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 custom_minimum_size = Vector2(300, 50)
 layout_direction = 1
 layout_mode = 2
-theme_override_constants/separation = 5
+theme_override_constants/separation = 0
 
 [node name="Upgrade_Excelsa" type="Button" parent="ScrollContainer/VBoxContainer"]
 texture_filter = 1
@@ -211,11 +212,34 @@ Upgrade: <value>
 Level: <value>"
 alignment = 0
 
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Upgrade_Excelsa"]
+layout_mode = 0
+offset_top = -43.0
+offset_right = 293.0
+offset_bottom = 156.0
+texture = ExtResource("5_yfybp")
+
 [node name="Excelsa_Upgrade_Icon" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Upgrade_Excelsa"]
 texture_filter = 1
-position = Vector2(243, 48)
-scale = Vector2(2, 2)
+position = Vector2(230, 50)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_hmlnv")
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Upgrade_Excelsa"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.06
+anchor_right = 0.03
+anchor_bottom = 0.06
+offset_left = 10.0
+offset_right = 275.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 13
+text = "Excelsa
+Current Value: <value>
+Upgrade: <value>
+Level: <value>"
 
 [node name="Upgrade_Robusta" type="Button" parent="ScrollContainer/VBoxContainer"]
 texture_filter = 1
@@ -224,10 +248,17 @@ layout_mode = 2
 text = "Locked"
 alignment = 0
 
+[node name="Robusta_Button_Texture" type="TextureRect" parent="ScrollContainer/VBoxContainer/Upgrade_Robusta"]
+texture_filter = 1
+offset_top = -43.0
+offset_right = 293.0
+offset_bottom = 156.0
+texture = ExtResource("5_yfybp")
+
 [node name="Robusta_Upgrade_Icon" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Upgrade_Robusta"]
 texture_filter = 1
-position = Vector2(243, 49)
-scale = Vector2(2, 2)
+position = Vector2(230, 50)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_t8xqe")
 
 [node name="Upgrade_Arabica" type="Button" parent="ScrollContainer/VBoxContainer"]
@@ -236,10 +267,17 @@ layout_mode = 2
 text = "Locked"
 alignment = 0
 
+[node name="Arabica_Button_Texture" type="TextureRect" parent="ScrollContainer/VBoxContainer/Upgrade_Arabica"]
+texture_filter = 1
+offset_top = -43.0
+offset_right = 293.0
+offset_bottom = 156.0
+texture = ExtResource("5_yfybp")
+
 [node name="Arabica_Upgrade_Icon" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Upgrade_Arabica"]
 texture_filter = 1
-position = Vector2(243, 49)
-scale = Vector2(2, 2)
+position = Vector2(230, 50)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_t8xqe")
 
 [node name="Upgrade_Liberica" type="Button" parent="ScrollContainer/VBoxContainer"]
@@ -248,18 +286,25 @@ layout_mode = 2
 text = "Locked"
 alignment = 0
 
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Upgrade_Liberica"]
+texture_filter = 1
+offset_top = -43.0
+offset_right = 293.0
+offset_bottom = 156.0
+texture = ExtResource("5_yfybp")
+
 [node name="Liberica_Upgrade_Icon" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Upgrade_Liberica"]
 texture_filter = 1
-position = Vector2(243, 49)
-scale = Vector2(2, 2)
+position = Vector2(230, 50)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_t8xqe")
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Unlock_Bean" to="." method="_on_unlock_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Excelsa" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Excelsa" to="." method="_on_upgrade_excelsa_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Excelsa" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Robusta" to="." method="_on_upgrade_robusta_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Arabica" to="." method="_on_upgrade_arabica_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Liberica" to="." method="_on_upgrade_liberica_pressed"]
