@@ -3,9 +3,8 @@ extends Control
 
 # variable setup
 @export var label : Label
-var money : int = 1000000
+var money : int = 0
 static var coffeeValue : int = 1
-var unlock_cooldown : int = 0
 var beandex : int = 1 # we begin w/ excelsa, so it's not counted in the unlock progression
 @onready var unlock : Button = get_node("Unlock_Bean")
 
@@ -45,10 +44,15 @@ var upgrade_sprites : Array
 @onready var liberica_upgrade_sprite : Texture2D = preload("res://Assets/liberica bean.png")
 #>---UPGRADE ICON SPRITES---<#
 
+#>---MASSINT CHECK---<#
+func test_massint_class():
+	pass # function to test specific components of the massint class 
+#>---MASSINT CHECK---<#
 
 # calls on startup
 # sets up all the beans
 func _ready() -> void:
+	# test_massint_class()
 	excelsa = Bean.new("Excelsa", true, 0, 1, 1, 50, 25)
 	robusta = Bean.new("Robusta", false, 500, 5, 5, 200, 100)
 	arabica = Bean.new("Arabica", false, 10000, 10, 10, 500, 250)
@@ -57,14 +61,14 @@ func _ready() -> void:
 	upgrade_icons = [excelsa_upgrade_icon, robusta_upgrade_icon, arabica_upgrade_icon, liberica_upgrade_icon]
 	upgrade_sprites = [excelsa_upgrade_sprite, robusta_upgrade_sprite, arabica_upgrade_sprite, liberica_upgrade_sprite]
 	upgrades = [upgrade_excelsa, upgrade_robusta, upgrade_arabica, upgrade_liberica]
-
+	update_text()
 
 # frame by frame processing
-func _process(delta) -> void:
-	update_coffee_value()
-	update_money_text()
-	update_unlock_text()
-	update_upgrade_text()
+#func _process(delta) -> void:
+#	update_coffee_value()
+#	update_money_text()
+#	update_unlock_text()
+#	update_upgrade_text()
 
 
 #>---INTERACTION FUNCTIONS---<#
@@ -79,16 +83,14 @@ func _on_button_pressed() -> void:
 func _on_upgrade_excelsa_pressed() -> void:
 	upgrade_bean(excelsa)
 	update_text()
-
-
+	
 func _on_upgrade_robusta_pressed() -> void:
 	upgrade_bean(robusta)
 	update_text()
-
+	
 func _on_upgrade_arabica_pressed() -> void:
 	upgrade_bean(arabica)
 	update_text()
-
 
 func _on_upgrade_liberica_pressed() -> void:
 	upgrade_bean(liberica)
@@ -122,13 +124,14 @@ func make_coffee() -> void:
 
 
 #>---UPDATE FUNCTIONS---<#
-# updates the value of your coffee
 func update_text() -> void:
 	update_coffee_value()
 	update_money_text()
 	update_unlock_text()
 	update_upgrade_text()
 	
+	
+# updates the value of your coffee
 func update_coffee_value() -> void:
 	coffeeValue = 0
 	for bean in beans:
@@ -138,7 +141,8 @@ func update_coffee_value() -> void:
 
 # updates the amount of money displayed
 func update_money_text() -> void:
-	label.text = "$%s" %money
+	var condense = condense_num(money)
+	label.text = "$%s" %condense
 
 
 # updates unlock text
@@ -146,20 +150,40 @@ func update_unlock_text() -> void:
 	if beandex >= beans.size():
 		unlock.text = "All beans unlocked!"
 	else:
-		unlock.text = ("Unlock %s Bean\n$%s" %[beans[beandex].Name, beans[beandex].unlock_value])
+		var unlock_value = condense_num(beans[beandex].unlock_value)
+		unlock.text = ("Unlock %s Bean\n$%s" %[beans[beandex].Name, unlock_value])
 
 
 # updates the upgrade cost displayed
 func update_upgrade_text() -> void:
 	for index in beandex:
-		upgrades[index].text = "%s\nCurrent Value: $%s\nUpgrade: $%s\nLevel: %s" %[beans[index].Name, beans[index].sell_value, beans[index].upgrade_cost, beans[index].level]
+		var sell_value = condense_num(beans[index].sell_value)
+		var upgrade_cost = condense_num(beans[index].upgrade_cost)
+		upgrades[index].text = "%s\nCurrent Value: $%s\nUpgrade: $%s\nLevel: %s" %[beans[index].Name, sell_value, upgrade_cost, beans[index].level]
 #>---UPDATE FUNCTIONS---<#
 
 
+#>---MATHEMATICS FUNCTIONS---<#
+# simplifies a number (if large enough) into its first 3 digits and a suffix
+func condense_num(num: int) -> String:
+	var suffixes = ["k", "m", "b"]
+	var num_string = str(num)
+	if num_string.length() >= 4:
+		var threes = floor((num_string.length() - 1) / 3) # counts digits in threes (omitting the first)
+		var condense = floor_to(float(num) / (10 ** (threes * 3)), 2) # divides number to ones place and floors to the hundredth
+		if threes > suffixes.size():
+			num_string = e_notation(condense, num_string.length())
+		else:
+			num_string = str(condense) + suffixes[threes - 1]
+	return num_string
 
-# Next ideas:
-	# The upgrade buttons are all identical, aside from their position and the bean they relate to
-	# We could make a class for upgrade buttons, that each have a specific ID number, like with the beans
-	# From there upgrading beans could be made more versatile, as
-		# A function in prototype_clicker that utilizes the ID of the button
-		# A function in the upgrade button class that goes directly to their corresponding bean
+
+# floors value to a specific decimal
+func floor_to(num: float, power: int = 0) -> float:
+	return floor(num * (10 ** power)) / (10 ** power)
+
+
+# failsafe; converts number into e notation if too large for a suffix
+func e_notation(num: float, size: int) -> String:
+	return str(num) + "e+" + str(size - 1)
+#>---MATHEMATICS FUNCTIONS---<#
