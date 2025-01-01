@@ -3,8 +3,8 @@ extends Control
 
 # variable setup
 @export var label : Label
-var money : int = 0
-static var coffeeValue : int = 1
+var money : Massint = Massint.new([0])
+static var coffeeValue : Massint = Massint.new([1])
 var beandex : int = 1 # we begin w/ excelsa, so it's not counted in the unlock progression
 @onready var unlock : Button = get_node("Unlock_Bean")
 
@@ -100,10 +100,10 @@ func _on_upgrade_liberica_pressed() -> void:
 # unlocks beans
 func _on_unlock_pressed() -> void:
 	if beandex < beans.size():
-		if (money >= beans[beandex].unlock_value):
+		if (money.greateq(beans[beandex].unlock_value)):
 			beans[beandex].unlocked = true
 			upgrade_icons[beandex].texture = upgrade_sprites[beandex]
-			money -= beans[beandex].unlock_value
+			money.subtract(beans[beandex].unlock_value)
 			beandex += 1
 			update_text()
 #>---INTERACTION FUNCTIONS---<#
@@ -112,14 +112,14 @@ func _on_unlock_pressed() -> void:
 #>---MONEY FUNCTIONS---<#
 # upgrades bean sell_value if you have enough money
 func upgrade_bean(bean) -> void:
-	if bean.unlocked && money >= bean.upgrade_cost:
-		money -= bean.upgrade_cost
+	if bean.unlocked && money.greateq(bean.upgrade_cost):
+		money.subtract(bean.upgrade_cost)
 		bean.upgrade_bean()
 
 
 # updates your money
 func make_coffee() -> void:
-	money += coffeeValue
+	money.add(coffeeValue)
 #>---MONEY FUNCTIONS---<#
 
 
@@ -133,16 +133,15 @@ func update_text() -> void:
 	
 # updates the value of your coffee
 func update_coffee_value() -> void:
-	coffeeValue = 0
+	coffeeValue.value = [0]
 	for bean in beans:
 		if bean.unlocked:
-			coffeeValue += bean.sell_value
+			coffeeValue.add(bean.sell_value)
 
 
 # updates the amount of money displayed
 func update_money_text() -> void:
-	var condense = condense_num(money)
-	label.text = "$%s" %condense
+	label.text = "$%s" % money.condensed()
 
 
 # updates unlock text
@@ -150,40 +149,14 @@ func update_unlock_text() -> void:
 	if beandex >= beans.size():
 		unlock.text = "All beans unlocked!"
 	else:
-		var unlock_value = condense_num(beans[beandex].unlock_value)
+		var unlock_value = beans[beandex].unlock_value.condensed()
 		unlock.text = ("Unlock %s Bean\n$%s" %[beans[beandex].Name, unlock_value])
 
 
 # updates the upgrade cost displayed
 func update_upgrade_text() -> void:
 	for index in beandex:
-		var sell_value = condense_num(beans[index].sell_value)
-		var upgrade_cost = condense_num(beans[index].upgrade_cost)
+		var sell_value = beans[index].sell_value.condensed()
+		var upgrade_cost = beans[index].upgrade_cost.condensed()
 		upgrades[index].text = "%s\nCurrent Value: $%s\nUpgrade: $%s\nLevel: %s" %[beans[index].Name, sell_value, upgrade_cost, beans[index].level]
 #>---UPDATE FUNCTIONS---<#
-
-
-#>---MATHEMATICS FUNCTIONS---<#
-# simplifies a number (if large enough) into its first 3 digits and a suffix
-func condense_num(num: int) -> String:
-	var suffixes = ["k", "m", "b"]
-	var num_string = str(num)
-	if num_string.length() >= 4:
-		var threes = floor((num_string.length() - 1) / 3) # counts digits in threes (omitting the first)
-		var condense = floor_to(float(num) / (10 ** (threes * 3)), 2) # divides number to ones place and floors to the hundredth
-		if threes > suffixes.size():
-			num_string = e_notation(condense, num_string.length())
-		else:
-			num_string = str(condense) + suffixes[threes - 1]
-	return num_string
-
-
-# floors value to a specific decimal
-func floor_to(num: float, power: int = 0) -> float:
-	return floor(num * (10 ** power)) / (10 ** power)
-
-
-# failsafe; converts number into e notation if too large for a suffix
-func e_notation(num: float, size: int) -> String:
-	return str(num) + "e+" + str(size - 1)
-#>---MATHEMATICS FUNCTIONS---<#

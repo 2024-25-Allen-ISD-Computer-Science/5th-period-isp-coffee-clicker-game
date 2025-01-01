@@ -1,12 +1,15 @@
 class_name Massint
-extends Object
+extends Resource
 
 # properties of massint
 @export var value: Array
 @export var suffixes: Array
 
 func _init(value: Variant):
-	assert(value is int or value is Array, "ERROR: Massints must be initialized using either int or Array. %s is neither" % str(value)) # flexible to either massints or integers
+	assign(value)
+
+func assign(value: Variant):
+	assert(value is int or value is Array, "ERROR: Massints must be initialized or reassigned using either int or Array. %s is neither" % str(value)) # flexible to either massints or integers
 	if value is int:
 		assert(value >= 0, "ERROR: Massints are unsigned. The supplied integer (%s) must be nonnegative" % value)
 		self.value = massify(value)
@@ -19,8 +22,6 @@ func _init(value: Variant):
 	self.suffixes = ["", "", "K", "M", "B", "T", "Qa", "Qt", "Sx", "Sp", "Oc", "No", "Dc"] # two empty strings addressed to 0 and 1-999
 	grow() # in case of improper format
 	regroup() # in case of improper values
-
-
 
 #>---INPUT HANDLING---<#
 
@@ -44,6 +45,8 @@ func massify(input: int) -> Array:
 
 # returns a condensed (if necessary) string of the number
 func condensed() -> String:
+	if triplets() >= suffixes.size():
+		return e_notation()
 	var first = str(value[triplets() - 1]) # triplets() is the SIZE of the number, not its LAST INDEX
 	if triplets() < 2: # returns early if too small to be condensed
 		return first
@@ -51,18 +54,30 @@ func condensed() -> String:
 	if second != "0":
 		second = lead_zeroes(second)
 		second = trail_zeroes(second)
-	return first + "." + second + suffixes[triplets()]
+	var output = "%s.%s" % [first, second] + suffixes[triplets()]
+	return output
 
 # formats smaller numbers for condensed()
 func lead_zeroes(input: String) -> String:
 	var output = input
-	while output.length() > 3:
+	while output.length() < 3:
 		output = "0" + output # adds zeroes to the beginning of the string for correct placement (i.e [1, 1, 0] should be "1.001K" and not "1.1K")
 	return output
 
 # formats larger numbers for condensed()
 func trail_zeroes(input: String) -> String:
 	return input.rstrip("0") # removes trailing zeroes from the end of the string (i.e. [100, 1, 0] should be "1.1K" and not "1.100K")
+
+# failsafe; converts number into e notation if too large for a suffix
+func e_notation() -> String:
+	var first = (value[triplets() - 1]) * 1_000
+	var second = value[triplets() - 2]
+	var num = float(first) + float(second)
+	var e_plus = str(exact() - 1)
+	num /= 10 ** (str(num).length() - 1)
+	var output = str(num)
+	output = output.substr(0, 5) + "e+" + e_plus 
+	return output
 
 #>---STRING HANDLING---<#
 
@@ -96,11 +111,12 @@ func regroup() -> void:
 	var index = 0
 	while index != value.size():
 		grow() # ensuring space for regrouping operations
-		var excess = (value[index] - (value[index] % 1_000)) # represents how far over 999
 		if value[index] < 0: # below - borrowing
-			value[index + 1] -= excess / 1_000 # this value...
-			value[index] += excess # is 1,000 times larger in the previous triplet
+			var deficit = abs(value[index]) + 1000 - ((abs(value[index]) + 1000) % 1_000)
+			value[index + 1] -= deficit / 1_000 # this value...
+			value[index] += deficit # is 1,000 times larger in the previous triplet
 		elif value[index] > 999: # above + carrying
+			var excess = value[index] - (value[index] % 1_000) # represents how far over 999
 			value[index] -= excess # this value...
 			value[index + 1] += excess / 1_000 # is 1,000 times smaller in the next triplet
 		index += 1
