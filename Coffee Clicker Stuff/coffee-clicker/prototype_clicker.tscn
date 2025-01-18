@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cfmr7rns8wk2u"]
+[gd_scene load_steps=23 format=3 uid="uid://cfmr7rns8wk2u"]
 
 [ext_resource type="Script" path="res://scripts/prototype_clicker.gd" id="1_457p2"]
 [ext_resource type="Texture2D" uid="uid://bes05xamqkoy" path="res://Assets/Background.png" id="2_1sek0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://crb4k7y2rcjkp" path="res://Assets/buck mone.png" id="2_ij18e"]
 [ext_resource type="Texture2D" uid="uid://c2g0cqkibwgsg" path="res://Assets/excelsa bean.png" id="3_hmlnv"]
 [ext_resource type="Texture2D" uid="uid://dbgho6fmmfeno" path="res://Assets/Placeholder.png" id="3_t8xqe"]
+[ext_resource type="Texture2D" uid="uid://bawbyy525q5qw" path="res://Assets/New Button.png" id="5_n8bqk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fld2h"]
 
@@ -189,7 +190,7 @@ $500"
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.708333
+anchor_left = 0.709201
 anchor_top = 0.242284
 anchor_right = 0.969618
 anchor_bottom = 0.878086
@@ -201,7 +202,21 @@ layout_direction = 1
 layout_mode = 2
 theme_override_constants/separation = 5
 
+[node name="Upgrade_Excelsa2" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+texture_normal = ExtResource("5_n8bqk")
+stretch_mode = 0
+
+[node name="Excelsa_Upgrade_Icon" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Upgrade_Excelsa2"]
+texture_filter = 1
+position = Vector2(230, 60)
+scale = Vector2(3, 3)
+texture = ExtResource("3_hmlnv")
+
 [node name="Upgrade_Excelsa" type="Button" parent="ScrollContainer/VBoxContainer"]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(-0.13, 0)
 layout_mode = 2
@@ -211,48 +226,66 @@ Upgrade: <value>
 Level: <value>"
 alignment = 0
 
-[node name="Excelsa_Upgrade_Icon" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Upgrade_Excelsa"]
+[node name="Upgrade_Robusta2" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 texture_filter = 1
-position = Vector2(243, 48)
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+texture_normal = ExtResource("5_n8bqk")
+stretch_mode = 0
+
+[node name="Robusta_Upgrade_Icon" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Upgrade_Robusta2"]
+texture_filter = 1
+position = Vector2(230, 193)
 scale = Vector2(2, 2)
-texture = ExtResource("3_hmlnv")
+texture = ExtResource("3_t8xqe")
 
 [node name="Upgrade_Robusta" type="Button" parent="ScrollContainer/VBoxContainer"]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 text = "Locked"
 alignment = 0
 
-[node name="Robusta_Upgrade_Icon" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Upgrade_Robusta"]
+[node name="Upgrade_Arabica2" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 texture_filter = 1
-position = Vector2(243, 49)
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+texture_normal = ExtResource("5_n8bqk")
+stretch_mode = 0
+
+[node name="Arabica_Upgrade_Icon" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Upgrade_Arabica2"]
+texture_filter = 1
+position = Vector2(243, 182)
 scale = Vector2(2, 2)
 texture = ExtResource("3_t8xqe")
 
 [node name="Upgrade_Arabica" type="Button" parent="ScrollContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 text = "Locked"
 alignment = 0
 
-[node name="Arabica_Upgrade_Icon" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Upgrade_Arabica"]
+[node name="Upgrade_Liberica2" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 texture_filter = 1
-position = Vector2(243, 49)
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+texture_normal = ExtResource("5_n8bqk")
+stretch_mode = 0
+
+[node name="Liberica_Upgrade_Icon" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Upgrade_Liberica2"]
+texture_filter = 1
+position = Vector2(243, 182)
 scale = Vector2(2, 2)
 texture = ExtResource("3_t8xqe")
 
 [node name="Upgrade_Liberica" type="Button" parent="ScrollContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 text = "Locked"
 alignment = 0
-
-[node name="Liberica_Upgrade_Icon" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Upgrade_Liberica"]
-texture_filter = 1
-position = Vector2(243, 49)
-scale = Vector2(2, 2)
-texture = ExtResource("3_t8xqe")
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
