@@ -20,19 +20,19 @@ var liberica
 
 #>---UPGRADE VARS---<#
 var upgrades : Array
-@onready var upgrade_excelsa : Button = get_node("ScrollContainer/VBoxContainer/Upgrade_Excelsa")
-@onready var upgrade_robusta : Button = get_node("ScrollContainer/VBoxContainer/Upgrade_Robusta")
-@onready var upgrade_arabica : Button = get_node("ScrollContainer/VBoxContainer/Upgrade_Arabica")
-@onready var upgrade_liberica : Button = get_node("ScrollContainer/VBoxContainer/Upgrade_Liberica")
+@onready var upgrade_excelsa : TextureButton = get_node("ScrollContainer/VBoxContainer/Upgrade_Excelsa2")
+@onready var upgrade_robusta : TextureButton = get_node("ScrollContainer/VBoxContainer/Upgrade_Robusta2")
+@onready var upgrade_arabica : TextureButton = get_node("ScrollContainer/VBoxContainer/Upgrade_Arabica2")
+@onready var upgrade_liberica : TextureButton = get_node("ScrollContainer/VBoxContainer/Upgrade_Liberica2")
 #>---UPGRADE VARS---<#
 
 
 #>---UPGRADE ICON VARS---<#
 var upgrade_icons : Array
-@onready var excelsa_upgrade_icon : Sprite2D = get_node("ScrollContainer/VBoxContainer/Upgrade_Excelsa/Excelsa_Upgrade_Icon")
-@onready var robusta_upgrade_icon : Sprite2D = get_node("ScrollContainer/VBoxContainer/Upgrade_Robusta/Robusta_Upgrade_Icon")
-@onready var arabica_upgrade_icon : Sprite2D = get_node("ScrollContainer/VBoxContainer/Upgrade_Arabica/Arabica_Upgrade_Icon")
-@onready var liberica_upgrade_icon : Sprite2D = get_node("ScrollContainer/VBoxContainer/Upgrade_Liberica/Liberica_Upgrade_Icon")
+@onready var excelsa_upgrade_icon : Sprite2D = get_node("ScrollContainer/VBoxContainer/Upgrade_Excelsa2/Excelsa_Upgrade_Icon")
+@onready var robusta_upgrade_icon : Sprite2D = get_node("ScrollContainer/VBoxContainer/Upgrade_Robusta2/Robusta_Upgrade_Icon")
+@onready var arabica_upgrade_icon : Sprite2D = get_node("ScrollContainer/VBoxContainer/Upgrade_Arabica2/Arabica_Upgrade_Icon")
+@onready var liberica_upgrade_icon : Sprite2D = get_node("ScrollContainer/VBoxContainer/Upgrade_Liberica2/Liberica_Upgrade_Icon")
 #>---UPGRADE ICON VARS---<#
 
 
@@ -43,6 +43,16 @@ var upgrade_sprites : Array
 @onready var arabica_upgrade_sprite : Texture2D = preload("res://Assets/arabaca bean.png")
 @onready var liberica_upgrade_sprite : Texture2D = preload("res://Assets/liberica bean.png")
 #>---UPGRADE ICON SPRITES---<#
+
+
+#>---Upgrade Labels---<#
+var upgrade_labels : Array
+@onready var excelsa_label : RichTextLabel = get_node("ScrollContainer/VBoxContainer/Upgrade_Excelsa2/Excelsa_Label")
+@onready var robusta_label : RichTextLabel = get_node("ScrollContainer/VBoxContainer/Upgrade_Robusta2/Robusta_Label")
+@onready var arabica_label : RichTextLabel = get_node("ScrollContainer/VBoxContainer/Upgrade_Arabica2/Arabica_Label")
+@onready var liberica_label : RichTextLabel = get_node("ScrollContainer/VBoxContainer/Upgrade_Liberica2/Liberica_Label")
+#>---Upgrade Labels---<#
+
 
 #>---MASSINT CHECK---<#
 func test_massint_class():
@@ -60,6 +70,7 @@ func _ready() -> void:
 	beans = [excelsa, robusta, arabica, liberica]
 	upgrade_icons = [excelsa_upgrade_icon, robusta_upgrade_icon, arabica_upgrade_icon, liberica_upgrade_icon]
 	upgrade_sprites = [excelsa_upgrade_sprite, robusta_upgrade_sprite, arabica_upgrade_sprite, liberica_upgrade_sprite]
+	upgrade_labels = [excelsa_label, robusta_label, arabica_label, liberica_label]
 	upgrades = [upgrade_excelsa, upgrade_robusta, upgrade_arabica, upgrade_liberica]
 	update_text()
 
@@ -158,5 +169,5 @@ func update_upgrade_text() -> void:
 	for index in beandex:
 		var sell_value = beans[index].sell_value.condensed()
 		var upgrade_cost = beans[index].upgrade_cost.condensed()
-		upgrades[index].text = "%s\nCurrent Value: $%s\nUpgrade: $%s\nLevel: %s" %[beans[index].Name, sell_value, upgrade_cost, beans[index].level]
+		upgrade_labels[index].text = "%s\nCurrent Value: $%s\nUpgrade: $%s\nLevel: %s" %[beans[index].Name, sell_value, upgrade_cost, beans[index].level]
 #>---UPDATE FUNCTIONS---<#
