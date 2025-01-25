@@ -1,13 +1,24 @@
 class_name Massint
 extends Resource
 
+# the massint system is a method of writing numbers such that values higher than 2^63-1 (godot's
+# integer limit) can be a part of our project. massints are arrays of 3 digit numbers (referred to 
+# as "triplets" in the code) ordered from least to most significant in order to represent massive
+# unsigned integers.
+# for example: 28,572,957 = [957, 572, 28]
+
 # properties of massint
 @export var value: Array
 @export var suffixes: Array
 
-func _init(value: Variant):
+func _init(value: Variant = []):
 	assign(value)
 
+
+
+#>---INITIALIZATION---<#
+
+# used with ints or massints to reassign its value
 func assign(value: Variant):
 	assert(value is int or value is Array, "ERROR: Massints must be initialized or reassigned using either int or Array. %s is neither" % str(value)) # flexible to either massints or integers
 	if value is int:
@@ -22,6 +33,10 @@ func assign(value: Variant):
 	self.suffixes = ["", "", "K", "M", "B", "T", "Qa", "Qt", "Sx", "Sp", "Oc", "No", "Dc"] # two empty strings addressed to 0 and 1-999
 	grow() # in case of improper format
 	regroup() # in case of improper values
+
+#>---INITIALIZATION---<#
+
+
 
 #>---INPUT HANDLING---<#
 
@@ -239,11 +254,9 @@ func greater(than: Variant) -> bool:
 	if than is int:
 		return self.greater(Massint.new(than))
 	else:
-		var size_p = self.triplets()
-		var size_q = than.triplets()
-		if size_p != size_q: #1. different sizes (size-wise)
-			return size_p > size_q
-		for index in range(size_p - 1, -1, -1): #2. same sizes (element-wise, starting from most significant digits)
+		if self.triplets() != than.triplets(): #1. different sizes (size-wise)
+			return self.triplets() > than.triplets()
+		for index in range(self.triplets() - 1, -1, -1): #2. same sizes (element-wise, starting from most significant digits)
 			if self.value[index] != than.value[index]:
 				return self.value[index] > than.value[index]
 		return false #3. identical (false)
@@ -254,36 +267,36 @@ func less(than: Variant) -> bool:
 	if than is int:
 		return self.less(Massint.new(than))
 	else:
-		var size_p = self.triplets()
-		var size_q = than.triplets()
-		if size_p != size_q: #1. different sizes (size-wise)
-			return size_p < size_q
-		for index in range(size_p - 1, -1, -1): #2. same sizes (element-wise, starting from most significant triplets)
+		if self.triplets() != than.triplets(): #1. different sizes (size-wise)
+			return self.triplets() < than.triplets()
+		for index in range(self.triplets() - 1, -1, -1): #2. same sizes (element-wise, starting from most significant triplets)
 			if self.value[index] != than.value[index]:
 				return self.value[index] < than.value[index]
 		return false #3. identical (false)
 
+# same as previous two but equality
 func equal(to: Variant) -> bool:
 	assert(to is int or to is Massint, "ERROR: Comparees must be either int or massint. %s is neither" % to)
 	if to is int:
 		return self.equal(Massint.new(to))
 	else:
-		var size_p = self.triplets()
-		var size_q = to.triplets()
-		if size_p != size_q: #1. different sizes (false)
+		if self.triplets() != to.triplets(): #1. different sizes (false)
 			return false
-		for index in range(size_p - 1, -1, -1): #2. same sizes (element-wise, starting from most significant triplets)
+		for index in range(self.triplets() - 1, -1, -1): #2. same sizes (element-wise, starting from most significant triplets)
 			if self.value[index] != to.value[index]:
 				return false
 		return true #3. identical (true)
 	# return !greater(to) && !less(to)
 
+# opposite of equal
 func unequal(to: Variant) -> bool:
 	return !equal(to)
 
+# greater or equal
 func greateq(thanto: Variant) -> bool:
 	return greater(thanto) || equal(thanto)
 
+# greater or equal
 func lesseq(thanto: Variant) -> bool:
 	return less(thanto) || equal(thanto)
 
