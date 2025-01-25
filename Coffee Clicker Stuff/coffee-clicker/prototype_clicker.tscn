@@ -188,6 +188,25 @@ offset_bottom = 0.295998
 text = "Unlock Robusta Bean
 $500"
 
+[node name="Unlock_Bean2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 7.0
+offset_right = 281.0
+offset_bottom = 130.0
+texture_normal = ExtResource("5_n8bqk")
+texture_pressed = ExtResource("6_aqc5y")
+stretch_mode = 0
+
+[node name="Unlock_Bean_Label" type="RichTextLabel" parent="Unlock_Bean2"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 39.0
+offset_right = 259.0
+offset_bottom = 116.0
+mouse_filter = 2
+bbcode_enabled = true
+
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -253,6 +272,7 @@ texture = ExtResource("3_t8xqe")
 
 [node name="Robusta_Label" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/Upgrade_Robusta2"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 12.0
 offset_top = 8.0
 offset_right = 194.0
@@ -283,6 +303,7 @@ texture = ExtResource("3_t8xqe")
 
 [node name="Arabica_Label" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/Upgrade_Arabica2"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 12.0
 offset_top = 8.0
 offset_right = 194.0
@@ -312,6 +333,7 @@ texture = ExtResource("3_t8xqe")
 
 [node name="Liberica_Label" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/Upgrade_Liberica2"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 12.0
 offset_top = 8.0
 offset_right = 194.0
@@ -329,9 +351,13 @@ alignment = 0
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Unlock_Bean" to="." method="_on_unlock_pressed"]
+[connection signal="pressed" from="Unlock_Bean2" to="." method="_on_unlock_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Excelsa2" to="." method="_on_upgrade_excelsa_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Excelsa" to="." method="_on_upgrade_excelsa_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Excelsa" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Robusta2" to="." method="_on_upgrade_robusta_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Robusta" to="." method="_on_upgrade_robusta_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Arabica2" to="." method="_on_upgrade_arabica_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Arabica" to="." method="_on_upgrade_arabica_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Liberica2" to="." method="_on_upgrade_liberica_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Liberica" to="." method="_on_upgrade_liberica_pressed"]

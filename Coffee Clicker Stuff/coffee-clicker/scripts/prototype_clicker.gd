@@ -6,8 +6,8 @@ extends Control
 var money : Massint = Massint.new([0])
 static var coffeeValue : Massint = Massint.new([1])
 var beandex : int = 1 # we begin w/ excelsa, so it's not counted in the unlock progression
-@onready var unlock : Button = get_node("Unlock_Bean")
-
+@onready var unlock : TextureButton = get_node("Unlock_Bean2")
+@onready var unlock_text : RichTextLabel = get_node("Unlock_Bean2/Unlock_Bean_Label")
 
 #>---BEAN VARS---<#
 var beans : Array
@@ -158,10 +158,10 @@ func update_money_text() -> void:
 # updates unlock text
 func update_unlock_text() -> void:
 	if beandex >= beans.size():
-		unlock.text = "All beans unlocked!"
+		unlock_text.text = "[center]All beans unlocked![/center]"
 	else:
 		var unlock_value = beans[beandex].unlock_value.condensed()
-		unlock.text = ("Unlock %s Bean\n$%s" %[beans[beandex].Name, unlock_value])
+		unlock_text.text = ("[center]Unlock %s Bean\n$%s[/center]" %[beans[beandex].Name, unlock_value])
 
 
 # updates the upgrade cost displayed
