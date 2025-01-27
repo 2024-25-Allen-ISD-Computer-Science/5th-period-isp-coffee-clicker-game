@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cfmr7rns8wk2u"]
+[gd_scene load_steps=25 format=3 uid="uid://cfmr7rns8wk2u"]
 
 [ext_resource type="Script" path="res://scripts/prototype_clicker.gd" id="1_457p2"]
 [ext_resource type="Texture2D" uid="uid://bes05xamqkoy" path="res://Assets/Background.png" id="2_1sek0"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dbgho6fmmfeno" path="res://Assets/Placeholder.png" id="3_t8xqe"]
 [ext_resource type="Texture2D" uid="uid://bawbyy525q5qw" path="res://Assets/New Button.png" id="5_n8bqk"]
 [ext_resource type="Texture2D" uid="uid://bghefk3ij403f" path="res://Assets/New Button (1).png" id="6_aqc5y"]
+[ext_resource type="Texture2D" uid="uid://1u2nrtp7xrh4" path="res://Assets/UI_Background_Long.png" id="7_k18yu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fld2h"]
 
@@ -173,27 +174,12 @@ libraries = {
 "": SubResource("AnimationLibrary_y87yw")
 }
 
-[node name="Unlock_Bean" type="Button" parent="."]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.021
-anchor_top = 0.037
-anchor_right = 0.243
-anchor_bottom = 0.123
-offset_left = -8.192
-offset_top = -15.976
-offset_right = 0.0639954
-offset_bottom = 0.295998
-text = "Unlock Robusta Bean
-$500"
-
 [node name="Unlock_Bean2" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 7.0
-offset_right = 281.0
-offset_bottom = 130.0
+offset_left = 799.0
+offset_top = 2.0
+offset_right = 1155.0
+offset_bottom = 158.0
 texture_normal = ExtResource("5_n8bqk")
 texture_pressed = ExtResource("6_aqc5y")
 stretch_mode = 0
@@ -202,18 +188,27 @@ stretch_mode = 0
 layout_mode = 0
 offset_left = 10.0
 offset_top = 39.0
-offset_right = 259.0
+offset_right = 346.0
 offset_bottom = 116.0
 mouse_filter = 2
 bbcode_enabled = true
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 799.0
+offset_top = 157.0
+offset_right = 1155.0
+offset_bottom = 651.0
+texture = ExtResource("7_k18yu")
+expand_mode = 1
+
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.709201
-anchor_top = 0.242284
-anchor_right = 0.976562
-anchor_bottom = 0.878086
+anchor_left = 0.713542
+anchor_top = 0.277778
+anchor_right = 0.980035
+anchor_bottom = 0.978395
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
@@ -350,7 +345,6 @@ alignment = 0
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Unlock_Bean" to="." method="_on_unlock_pressed"]
 [connection signal="pressed" from="Unlock_Bean2" to="." method="_on_unlock_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Excelsa2" to="." method="_on_upgrade_excelsa_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Excelsa" to="." method="_on_upgrade_excelsa_pressed"]
