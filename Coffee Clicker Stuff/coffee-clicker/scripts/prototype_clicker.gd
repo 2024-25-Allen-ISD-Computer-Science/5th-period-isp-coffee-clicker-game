@@ -8,6 +8,8 @@ static var coffeeValue : Massint = Massint.new([1])
 var beandex : int = 1 # we begin w/ excelsa, so it's not counted in the unlock progression
 @onready var unlock : TextureButton = get_node("Unlock_Bean2")
 @onready var unlock_text : RichTextLabel = get_node("Unlock_Bean2/Unlock_Bean_Label")
+var map = Map.new()
+
 
 #>---BEAN VARS---<#
 var beans : Array
@@ -53,16 +55,9 @@ var upgrade_labels : Array
 @onready var liberica_label : RichTextLabel = get_node("ScrollContainer/VBoxContainer/Upgrade_Liberica2/Liberica_Label")
 #>---Upgrade Labels---<#
 
-
-#>---MASSINT CHECK---<#
-func test_massint_class():
-	pass # function to test specific components of the massint class 
-#>---MASSINT CHECK---<#
-
 # calls on startup
 # sets up all the beans
 func _ready() -> void:
-	# test_massint_class()
 	excelsa = Bean.new("Excelsa", true, 0, 1, 1, 50, 25)
 	robusta = Bean.new("Robusta", false, 500, 5, 5, 200, 100)
 	arabica = Bean.new("Arabica", false, 10000, 10, 10, 500, 250)
@@ -116,6 +111,7 @@ func _on_unlock_pressed() -> void:
 			upgrade_icons[beandex].texture = upgrade_sprites[beandex]
 			money.subtract(beans[beandex].unlock_value)
 			beandex += 1
+			map.multipliers.append(1)
 			update_text()
 #>---INTERACTION FUNCTIONS---<#
 
@@ -145,9 +141,8 @@ func update_text() -> void:
 # updates the value of your coffee
 func update_coffee_value() -> void:
 	coffeeValue.value = [0]
-	for bean in beans:
-		if bean.unlocked:
-			coffeeValue.add(bean.sell_value)
+	for index in range(beandex):
+		coffeeValue.add(beans[index].sell_value)
 
 
 # updates the amount of money displayed
