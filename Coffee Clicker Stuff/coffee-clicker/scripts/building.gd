@@ -12,6 +12,8 @@ var position_type: int # where the building must be positioned to function
 	# 4: rook (any space to the direct N/E/S/W of the stand)
 	# 5: bishop (any space diagonal to the stand)
 	# 6: knight (any space that forms an L with the stand)
+	# 7: outer rim (any space at the very edge of the grid)
+	# 8: isolate (must have empty space all around)
 var bean_type: int # which bean the building affects
 var multiplier: int 
 

@@ -26,14 +26,22 @@ func origin() -> Array:
 	push_error("Coffee stand not found on grid.")
 	return []
 
-# places a building at the specified location 
+# counts how many buildings of a given pos-type exist on the grid
+func count_if(position_type: int) -> int:
+	var count = 0
+	for x in range(grid.size()):
+		var x_strip: Array = grid[x]
+		for y in range(x_strip.size()):
+			var y_cell: Building = x_strip[y]
+			if y_cell.position_type == position_type:
+				count += 1
+	return count
+
+# places an UNPLACED building at the specified location 
 func place(build_id: Dictionary, x: int, y: int) -> void:
 	var target: Building = grid[x][y]
 	if target.position_type == 1:
-		return
-		# READ THIS! # 
-			# may need an indication somewhere that the stand can't be replaced like this
-		# READ THIS! #
+		return # can't remove the stand
 	if target.position_type != 0:
 		remove(x, y)
 	target.define(build_id)
@@ -41,20 +49,45 @@ func place(build_id: Dictionary, x: int, y: int) -> void:
 	available_builds.erase(build_id)
 	update_multipliers()
 
+# moves a PLACED building from one location to another, swapping places with obstructions if
+# necessary
+func move(x: int, y: int, X: int, Y: int) -> void:
+	var from: Building = grid[x][y]
+	var to: Building = grid[X][Y]
+	if from.position_type == 0:
+		return # doesn't make sense to be interacting with nothing, but this could be removed
+	if to.position_type == 0: # moving building to an empty space; doesn't need temporary variables
+		to.define(from.params())
+		from.reset()
+	else:
+		var to_temp = to.params()
+		to.define(from.params())
+		from.define(to_temp)
+
 # removes a building (if any) from the specified location
 func remove(x: int, y: int) -> void:
 	var target: Building = grid[x][y]
-	match target.position_type:
-		0: return # can't remove a building that isn't there
-		1: return # can't remove the coffee stand from the map
-			# READ THIS! # 
-				# may need an indication somewhere that the stand can't be replaced like this
-			# READ THIS! #
-		_:
-			available_builds.append(target.params())
-			placed_builds.erase(target.params())
-			target.reset()
-			update_multipliers()
+	if target.position_type <= 1:
+		return # can't remove empty space or the stand
+	available_builds.append(target.params())
+	placed_builds.erase(target.params())
+	target.reset()
+	update_multipliers()
+
+# returns whether the specified location has no neighbors
+func alone_at(x: int, y: int) -> bool:
+	for x_neighbor in range(x - 1, x + 2):
+		if x_neighbor < 0 or x_neighbor >= grid.size():
+			continue
+		for y_neighbor in range(y - 1, y + 2):
+			if y_neighbor < 0 or y_neighbor >= grid[x_neighbor].size():
+				continue
+			if x_neighbor == x and y_neighbor == y:
+				continue
+			var cell: Building = grid[x_neighbor][y_neighbor]
+			if cell.position_type != 0:
+				return false
+	return true
 
 # parses through grid and checks which spaces contain the correct building (if any). then includes
 # each valid building's multiplier in the array
@@ -80,4 +113,6 @@ func check_position(position_type: int, x: int, y: int, X: int = origin()[0], Y:
 		4: return x == X or y == Y
 		5: return abs(x - X) == abs(y - Y)
 		6: return (abs(x - X) == 1 and abs(y - Y) == 2) or (abs(x - X) == 2 and abs(y - Y) == 1)
+		7: return x in [0, grid.size() - 1] or y in [0, grid[x].size() - 1]
+		8: return alone_at(x, y)
 		_: push_error("Type does not exist"); return false
