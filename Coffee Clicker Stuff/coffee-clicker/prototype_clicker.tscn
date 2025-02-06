@@ -104,6 +104,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -2.0
+offset_right = -1.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_457p2")
@@ -124,6 +128,8 @@ anchor_left = 0.790799
 anchor_top = 0.0493827
 anchor_right = 0.980903
 anchor_bottom = 0.17284
+offset_left = -761.0
+offset_right = -761.0
 grow_horizontal = 0
 theme_type_variation = &"HeaderLarge"
 text = "Money : <value>"
@@ -174,7 +180,50 @@ libraries = {
 "": SubResource("AnimationLibrary_y87yw")
 }
 
+[node name="Upgrade_Menu_Button" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.062
+offset_left = 925.0
+offset_top = 22.0
+offset_right = 1091.68
+offset_bottom = 80.824
+texture_normal = ExtResource("5_n8bqk")
+texture_pressed = ExtResource("6_aqc5y")
+stretch_mode = 0
+
+[node name="Upgrade_Menu_Label" type="RichTextLabel" parent="Upgrade_Menu_Button"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 35.0
+offset_right = 189.0
+offset_bottom = 86.0
+mouse_filter = 2
+text = "Upgrades"
+
+[node name="Close_Upgrade_Menu" type="TextureButton" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 671.0
+offset_top = 2.0
+offset_right = 799.0
+offset_bottom = 66.0
+texture_normal = ExtResource("5_n8bqk")
+texture_pressed = ExtResource("6_aqc5y")
+
+[node name="Close_Upgrades_Label" type="RichTextLabel" parent="Close_Upgrade_Menu"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 19.0
+offset_top = 15.0
+offset_right = 117.0
+offset_bottom = 53.0
+mouse_filter = 2
+text = "Close Menu"
+
 [node name="Unlock_Bean2" type="TextureButton" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 799.0
 offset_top = 2.0
@@ -193,7 +242,8 @@ offset_bottom = 116.0
 mouse_filter = 2
 bbcode_enabled = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Upgrade_Menu_Background" type="TextureRect" parent="."]
+visible = false
 layout_mode = 2
 offset_left = 799.0
 offset_top = 157.0
@@ -203,6 +253,7 @@ texture = ExtResource("7_k18yu")
 expand_mode = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.713542
@@ -240,17 +291,6 @@ offset_right = 194.0
 offset_bottom = 120.0
 mouse_filter = 2
 
-[node name="Upgrade_Excelsa" type="Button" parent="ScrollContainer/VBoxContainer"]
-visible = false
-texture_filter = 1
-custom_minimum_size = Vector2(-0.13, 0)
-layout_mode = 2
-text = "Excelsa
-Current Value: <value>
-Upgrade: <value>
-Level: <value>"
-alignment = 0
-
 [node name="Upgrade_Robusta2" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(0, 128)
@@ -273,14 +313,6 @@ offset_top = 8.0
 offset_right = 194.0
 offset_bottom = 120.0
 mouse_filter = 2
-
-[node name="Upgrade_Robusta" type="Button" parent="ScrollContainer/VBoxContainer"]
-visible = false
-texture_filter = 1
-custom_minimum_size = Vector2(300, 100)
-layout_mode = 2
-text = "Locked"
-alignment = 0
 
 [node name="Upgrade_Arabica2" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 texture_filter = 1
@@ -305,13 +337,6 @@ offset_right = 194.0
 offset_bottom = 120.0
 mouse_filter = 2
 
-[node name="Upgrade_Arabica" type="Button" parent="ScrollContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(300, 100)
-layout_mode = 2
-text = "Locked"
-alignment = 0
-
 [node name="Upgrade_Liberica2" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(0, 128)
@@ -335,23 +360,13 @@ offset_right = 194.0
 offset_bottom = 120.0
 mouse_filter = 2
 
-[node name="Upgrade_Liberica" type="Button" parent="ScrollContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(300, 100)
-layout_mode = 2
-text = "Locked"
-alignment = 0
-
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Upgrade_Menu_Button" to="." method="_on_upgrade_menu_pressed"]
+[connection signal="pressed" from="Close_Upgrade_Menu" to="." method="_on_close_upgrade_menu_pressed"]
 [connection signal="pressed" from="Unlock_Bean2" to="." method="_on_unlock_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Excelsa2" to="." method="_on_upgrade_excelsa_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Excelsa" to="." method="_on_upgrade_excelsa_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Excelsa" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Robusta2" to="." method="_on_upgrade_robusta_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Robusta" to="." method="_on_upgrade_robusta_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Arabica2" to="." method="_on_upgrade_arabica_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Arabica" to="." method="_on_upgrade_arabica_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Liberica2" to="." method="_on_upgrade_liberica_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Liberica" to="." method="_on_upgrade_liberica_pressed"]
