@@ -55,9 +55,14 @@ var upgrade_labels : Array
 @onready var liberica_label : RichTextLabel = get_node("ScrollContainer/VBoxContainer/Upgrade_Liberica2/Liberica_Label")
 #>---Upgrade Labels---<#
 
+func test():
+	var mass1 = Massint.new(100)
+	print(mass1.multiply(2).value)
+
 # calls on startup
 # sets up all the beans
 func _ready() -> void:
+	test()
 	excelsa = Bean.new("Excelsa", true, 0, 1, 1, 50, 25)
 	robusta = Bean.new("Robusta", false, 500, 5, 5, 200, 100)
 	arabica = Bean.new("Arabica", false, 10000, 10, 10, 500, 250)
@@ -121,7 +126,7 @@ func _on_unlock_pressed() -> void:
 		if (money.greateq(beans[beandex].unlock_value)):
 			beans[beandex].unlocked = true
 			upgrade_icons[beandex].texture = upgrade_sprites[beandex]
-			money.subtract(beans[beandex].unlock_value)
+			money = money.subtract(beans[beandex].unlock_value)
 			beandex += 1
 			map.multipliers.append(1)
 			update_text()
@@ -132,13 +137,13 @@ func _on_unlock_pressed() -> void:
 # upgrades bean sell_value if you have enough money
 func upgrade_bean(bean) -> void:
 	if bean.unlocked && money.greateq(bean.upgrade_cost):
-		money.subtract(bean.upgrade_cost)
+		money = money.subtract(bean.upgrade_cost)
 		bean.upgrade_bean()
 
 
 # updates your money
 func make_coffee() -> void:
-	money.add(coffeeValue)
+	money = money.add(coffeeValue)
 #>---MONEY FUNCTIONS---<#
 
 
@@ -154,7 +159,7 @@ func update_text() -> void:
 func update_coffee_value() -> void:
 	coffeeValue.value = [0]
 	for index in range(beandex):
-		coffeeValue.add(beans[index].sell_value)
+		coffeeValue = coffeeValue.add(beans[index].sell_value)
 
 
 # updates the amount of money displayed

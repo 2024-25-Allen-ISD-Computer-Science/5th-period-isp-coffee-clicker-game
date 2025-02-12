@@ -20,16 +20,18 @@ func _init(value: Variant = []):
 
 # used with ints or massints to reassign its value
 func assign(value: Variant):
-	assert(value is int or value is Array, "ERROR: Massints must be initialized or reassigned using either int or Array. %s is neither" % str(value)) # flexible to either massints or integers
+	assert(value is int or value is Array or value is Massint, "ERROR: Massints must be initialized or reassigned using either int or Array. %s is neither" % str(value)) # flexible to either massints or integers
 	if value is int:
 		assert(value >= 0, "ERROR: Massints are unsigned. The supplied integer (%s) must be nonnegative" % value)
 		self.value = massify(value)
-	else: 
+	elif value is Array: 
 		self.value = value
 		if self.value == []:
 			self.value = [0]
 		if triplets() >= 1:
 			assert(value[triplets() - 1] >= 0, "ERROR: Massints are unsigned. The last triplet (%s) must be nonnegative" % value[triplets() - 1])
+	else:
+		self.value = value.value
 	self.suffixes = ["", "", "K", "M", "B", "T", "Qa", "Qt", "Sx", "Sp", "Oc", "No", "Dc"] # two empty strings addressed to 0 and 1-999
 	grow() # in case of improper format
 	regroup() # in case of improper values
@@ -139,76 +141,56 @@ func regroup() -> void:
 	shrink() # in case there's more leading zeros than necessary
 
 # adds a massint to another massint
-func add(addend: Variant) -> void:
+func add(addend: Variant) -> Massint:
 	assert(addend is int or addend is Massint, "ERROR: Addends must be either int or massint. %s is neither" % addend)
 	if addend is int:
 		if addend == 0:
-			return # A + 0 = A
-		self.add(Massint.new(addend))
+			return Massint.new(self) # A + 0 = A
+		return self.add(Massint.new(addend))
 	else:
 		if addend.equal(0):
-			return # A + 0 = A
-		var common_size: int = self.triplets() # determines where parsing between arrays MUST stop before an error occurs
-		var result: Array = []
-		if addend.less(self): # common_size is influenced by the smaller massint
-			common_size = addend.triplets()
-		for index in range(common_size):
-			result.append(self.value[index] + addend.value[index]) # sums are made and then appended to result
-		if self.greater(addend):
-			result += self.value.slice(common_size, self.triplets()) # analogous to adding the larger massint's values to the smaller's leading zeroes
-		elif addend.greater(self):
-			result += addend.value.slice(common_size, addend.triplets()) # likewise
-		self.value = result 
-		regroup() # handling values in the thousands place
+			return Massint.new(self) # A + 0 = A
+		var result = Massint.new(array_add(self.value, addend.value))
+		result.regroup() # handling values in the thousands place
+		return result
 
 # subtracts a massint from another massint. as massints are unsigned, errors will occur if subtrahend > minuend
-func subtract(subtrahend: Variant) -> void:
+func subtract(subtrahend: Variant) -> Massint:
 	assert(subtrahend is int or subtrahend is Massint, "ERROR: Subtrahends must be either int or massint. %s is neither" % subtrahend)
 	if subtrahend is int:
 		if subtrahend == 0:
-			return # A - 0 = A
-		self.subtract(Massint.new(subtrahend))
+			return Massint.new(self) # A - 0 = A
+		return self.subtract(Massint.new(subtrahend))
 	else:
 		if subtrahend.equal(0):
-			return # A - 0 = A
+			return Massint.new(self) # A - 0 = A
 		if self.equal(subtrahend):
-			self.value = [0] # A - A = 0
-			return
+			return Massint.new(0) # A - A = 0
 		assert(!self.less(subtrahend), "ERROR: Massints are unsigned. %s - %s would result in a negative number" % [self.condensed(), subtrahend.condensed()])
-		var common_size: int = self.triplets() # determines where parsing between arrays MUST stop before an error occurs
-		var result: Array = []
-		if subtrahend.less(self): # common_size is influenced by the smaller massint
-			common_size = subtrahend.triplets()
-		for index in range(common_size):
-			result.append(self.value[index] - subtrahend.value[index]) # differences are made and then appended to result
-		if subtrahend.less(self): # common_size is influenced by the smaller massint
-			result += self.value.slice(common_size, self.triplets()) # analogous to subtracting the smaller's leading zeroes from the larger massint's values
-		self.value = result
-		regroup() # handling negative values
+		var result = Massint.new(array_subtract(self.value, subtrahend.value))
+		result.regroup() # handling negative values
+		return result
 
 # multiplies a massint by a massint/int (separate, type-based processes unlike the previous two)
-func multiply(multiplier: Variant) -> void:
+func multiply(multiplier: Variant) -> Massint:
 	assert(multiplier is int or multiplier is Massint, "ERROR: Multipliers must either be int or massint. %s is neither" % multiplier)
 	if multiplier is int:
 		assert(multiplier >= 0, "ERROR: Massints are unsigned. %s * %s would result in a negative number" % [self.condensed(), multiplier])
 		if multiplier == 0:
-			self.value = [0] # A * 0 = 0
-			return
+			return Massint.new(0) # A * 0 = 0
 		if multiplier == 1:
-			return # A * 1 = A
-		var result: Array = []
+			return Massint.new(self) # A * 1 = A
+		var result = []
 		for index in range(self.triplets()):
 			result.append(self.value[index] * multiplier) # somewhat like long multiplication, except the factor is broken up into triplets rather than digits
-		self.value = result
-		regroup() # handling numbers in the thousands place and higher
+		return Massint.new(result)
 	else:
-		if multiplier.equal(0): # zero property of multiplication
-			self.value = [0]
-			return
-		elif multiplier.equal(1): # identity property of multiplication
-			return
+		if multiplier.equal(0):
+			return Massint.new(0) # A * 0 = 0 
+		elif multiplier.equal(1):
+			return Massint.new(self) # A * 1 = A
 		else:
-			var result: Array = []
+			var result = []
 			if self.less(multiplier): # multiplies by the smaller factor
 				for mult_index in range(self.triplets()):
 					var current_result: Array = []
@@ -225,8 +207,7 @@ func multiply(multiplier: Variant) -> void:
 					for index in range(self.triplets()):
 						current_result.append(self.value[index] * multiplier.value[mult_index]) # same "long multiplication" concept
 					result = array_add(result, current_result) # adding up the subproducts to make the final product - also similar to long multiplication
-			self.value = result
-			regroup() # handling numbers in the thousands place and higher
+			return Massint.new(result)
 
 # returns an array of the sums of two other arrays
 func array_add(addend1: Array, addend2: Array) -> Array:
@@ -241,6 +222,21 @@ func array_add(addend1: Array, addend2: Array) -> Array:
 	for index in addend1.size():
 		sum.append(addend1[index] + addend2[index])
 	return sum
+	
+# returns an array of the difference of two other arrays
+func array_subtract(minuend: Array, subtrahend: Array) -> Array:
+	if minuend.size() != subtrahend.size(): # ensures one array's addends have a place with the other array's addends
+		if minuend.size() > subtrahend.size():
+			while minuend.size() > subtrahend.size():
+				subtrahend.append(0)
+		else:
+			while minuend.size() < subtrahend.size():
+				minuend.append(0)
+				push_error("THIS SHOULD NOT HAPPEN")
+	var difference: Array = []
+	for index in minuend.size():
+		difference.append(minuend[index] - subtrahend[index])
+	return difference
 
 #>---ARITHMETIC HANDLING---<#
 

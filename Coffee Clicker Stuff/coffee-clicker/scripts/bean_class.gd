@@ -22,11 +22,11 @@ func _init(Name : String, unlocked : bool, unlock_value : int, sell_value : int,
 	self.level = level
 
 func upgrade_bean() -> void:
-	sell_value.add(upgrade_value)
-	upgrade_cost.add(upgrade_cost_scale)
+	sell_value = sell_value.add(upgrade_value)
+	upgrade_cost = upgrade_cost.add(upgrade_cost_scale)
 	level += 1
 	if (level % 10 == 0):
-		sell_value.multiply(2)
-		upgrade_cost.multiply(2)
+		sell_value = sell_value.multiply(2)
+		upgrade_cost = upgrade_cost.multiply(2)
 		upgrade_value *= 2
 		upgrade_cost_scale *= 4
