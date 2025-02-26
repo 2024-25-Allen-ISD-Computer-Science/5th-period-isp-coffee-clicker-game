@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cfmr7rns8wk2u"]
+[gd_scene load_steps=27 format=3 uid="uid://cfmr7rns8wk2u"]
 
 [ext_resource type="Script" path="res://scripts/prototype_clicker.gd" id="1_457p2"]
 [ext_resource type="Texture2D" uid="uid://bes05xamqkoy" path="res://Assets/Background.png" id="2_1sek0"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bawbyy525q5qw" path="res://Assets/New Button.png" id="5_n8bqk"]
 [ext_resource type="Texture2D" uid="uid://bghefk3ij403f" path="res://Assets/New Button (1).png" id="6_aqc5y"]
 [ext_resource type="Texture2D" uid="uid://1u2nrtp7xrh4" path="res://Assets/UI_Background_Long.png" id="7_k18yu"]
+[ext_resource type="Texture2D" uid="uid://cbvrq5hmv4ox2" path="res://Assets/UI_Background_Big.png" id="10_07i6x"]
+[ext_resource type="Texture2D" uid="uid://uffga3ee2i4r" path="res://Assets/Grid_Block.png" id="11_1f6te"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fld2h"]
 
@@ -359,6 +361,52 @@ offset_top = 8.0
 offset_right = 194.0
 offset_bottom = 120.0
 mouse_filter = 2
+
+[node name="Building_Menu_Button" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 925.0
+offset_top = 139.0
+offset_right = 1132.0
+offset_bottom = 238.0
+texture_normal = ExtResource("5_n8bqk")
+texture_pressed = ExtResource("6_aqc5y")
+stretch_mode = 0
+
+[node name="Building_Menu_Label" type="RichTextLabel" parent="Building_Menu_Button"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 35.0
+offset_right = 198.0
+offset_bottom = 85.0
+mouse_filter = 2
+text = "Buildings"
+
+[node name="Building Menu" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 401.0
+offset_top = 54.0
+offset_right = 441.0
+offset_bottom = 94.0
+
+[node name="TextureRect" type="TextureRect" parent="Building Menu"]
+layout_mode = 0
+offset_right = 531.0
+offset_bottom = 531.0
+texture = ExtResource("10_07i6x")
+expand_mode = 1
+
+[node name="GridContainer" type="GridContainer" parent="Building Menu/TextureRect"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 16.0
+offset_right = 514.0
+offset_bottom = 515.0
+columns = 5
+
+[node name="TextureRect" type="TextureRect" parent="Building Menu/TextureRect/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("11_1f6te")
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

@@ -88,12 +88,14 @@ func _on_upgrade_menu_pressed() -> void:
 	get_node("Upgrade_Menu_Background").show()
 	get_node("ScrollContainer").show()
 	get_node("Close_Upgrade_Menu").show()
+	get_node("Building_Menu_Button").hide()
 
 func _on_close_upgrade_menu_pressed() -> void:
 	get_node("Unlock_Bean2").hide()
 	get_node("Upgrade_Menu_Background").hide()
 	get_node("ScrollContainer").hide()
 	get_node("Close_Upgrade_Menu").hide()
+	get_node("Building_Menu_Button").show()
 	
 # function for when the make coffee button is pressed
 func _on_button_pressed() -> void:
