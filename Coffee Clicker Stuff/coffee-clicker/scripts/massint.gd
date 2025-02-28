@@ -128,17 +128,35 @@ func regroup() -> void:
 	var index = 0
 	while index != value.size():
 		grow() # ensuring space for regrouping operations
+		
+		# THE "OFF MYSELF" REGROUP #
+		if round(value[index]) != value[index]: # between * downward carrying
+			if index == 0:
+				value[index] = int(round(value[index])) # can't access index -1, since cents REALLY won't matter here
+			var underflow = round_to(value[index] - floor(value[index]), 3) # represents how far over its floored value
+			value[index] = int(floor(value[index])) # this value...
+			value[index - 1] = int(value[index - 1] + underflow * 1_000) # is 1,000 times larger in the previous triplet
+			if value[index - 1] > 999: # necessary in cases like [999, 1.1, 0]
+				var excess = value[index - 1] - (value[index - 1]) % 1_000 # represents how far over 999
+				value[index - 1] -= excess # this value...
+				value[index] += excess / 1_000 # is 1,000 times smaller in the next triplet
+		
+		# THE NORMAL REGROUPS #
 		if value[index] < 0: # below - borrowing
-			var deficit = abs(value[index]) + 1000 - ((abs(value[index]) + 1000) % 1_000)
+			var deficit = abs(value[index]) + 1_000 - ((abs(value[index]) + 1000) % 1_000) # represents how far under 0
 			value[index + 1] -= deficit / 1_000 # this value...
 			value[index] += deficit # is 1,000 times larger in the previous triplet
-		elif value[index] > 999: # above + carrying
-			var excess = value[index] - (value[index] % 1_000) # represents how far over 999
+		elif value[index] > 999: # above + upward carrying
+			var excess = value[index] - (value[index]) % 1_000 # represents how far over 999
 			value[index] -= excess # this value...
 			value[index + 1] += excess / 1_000 # is 1,000 times smaller in the next triplet
 		index += 1
 	grow() # in case any 1s are carried into the last index
 	shrink() # in case there's more leading zeros than necessary
+
+# rounds a given value to a given place value (-1: tens; 1: tenths, 0: ones)
+func round_to(n: float, m: int) -> float:
+	return round(n * pow(10, m)) / pow(10, m)
 
 # adds a massint to another massint
 func add(addend: Variant) -> Massint:
@@ -171,10 +189,10 @@ func subtract(subtrahend: Variant) -> Massint:
 		result.regroup() # handling negative values
 		return result
 
-# multiplies a massint by a massint/int (separate, type-based processes unlike the previous two)
+# multiplies a massint by a int/float/massint (separate, type-based processes unlike the previous two)
 func multiply(multiplier: Variant) -> Massint:
-	assert(multiplier is int or multiplier is Massint, "ERROR: Multipliers must either be int or massint. %s is neither" % multiplier)
-	if multiplier is int:
+	assert(multiplier is int or multiplier is float or multiplier is Massint, "ERROR: Multipliers must either be int, float, or massint. %s is neither" % multiplier)
+	if multiplier is int or multiplier is float:
 		assert(multiplier >= 0, "ERROR: Massints are unsigned. %s * %s would result in a negative number" % [self.condensed(), multiplier])
 		if multiplier == 0:
 			return Massint.new(0) # A * 0 = 0
@@ -208,6 +226,13 @@ func multiply(multiplier: Variant) -> Massint:
 						current_result.append(self.value[index] * multiplier.value[mult_index]) # same "long multiplication" concept
 					result = array_add(result, current_result) # adding up the subproducts to make the final product - also similar to long multiplication
 			return Massint.new(result)
+
+# divides a massint by a int/float. massints MAY be implemented, but we don't have a purpose for that yet
+func divide(divisor: Variant) -> Massint:
+	assert(divisor is int or divisor is float, "ERROR: Divisors must either be int or float. %s is neither" % divisor)
+	assert(divisor > 0, "ERROR: Massints are unsigned. %s / %s would result in a negative number" % [self.condensed(), divisor])
+	assert(divisor != 0, "ERROR: Massints cannot handle zero division")
+	return self.multiply(pow(divisor, -1))
 
 # returns an array of the sums of two other arrays
 func array_add(addend1: Array, addend2: Array) -> Array:
