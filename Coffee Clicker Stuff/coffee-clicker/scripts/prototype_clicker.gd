@@ -83,6 +83,7 @@ func _ready() -> void:
 
 
 #>---INTERACTION FUNCTIONS---<#
+# function for when you click the upgrade menu button, opens up the menu and makes other things invisible
 func _on_upgrade_menu_pressed() -> void:
 	get_node("Unlock_Bean2").show()
 	get_node("Upgrade_Menu_Background").show()
@@ -90,12 +91,23 @@ func _on_upgrade_menu_pressed() -> void:
 	get_node("Close_Upgrade_Menu").show()
 	get_node("Building_Menu_Button").hide()
 
+#function for when you click the close upgrade menu button, closes up the menu and makes other things visible
 func _on_close_upgrade_menu_pressed() -> void:
 	get_node("Unlock_Bean2").hide()
 	get_node("Upgrade_Menu_Background").hide()
 	get_node("ScrollContainer").hide()
 	get_node("Close_Upgrade_Menu").hide()
 	get_node("Building_Menu_Button").show()
+
+func _on_building_menu_button_pressed() -> void:
+	get_node("Building_Menu").show()
+	get_node("Building_Menu_Button").hide()
+	get_node("Upgrade_Menu_Button").hide()
+
+func _on_close_building_menu_pressed() -> void:
+	get_node("Building_Menu").hide()
+	get_node("Building_Menu_Button").show()
+	get_node("Upgrade_Menu_Button").show()
 	
 # function for when the make coffee button is pressed
 func _on_button_pressed() -> void:
