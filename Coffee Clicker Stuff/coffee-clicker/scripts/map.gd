@@ -108,11 +108,11 @@ func check_position(position_type: int, x: int, y: int, X: int = origin()[0], Y:
 	match position_type:
 		0: return false
 		1: return false
-		2: return true
-		3: return abs(x - X) <= 1 and abs(y - Y) <= 1
-		4: return x == X or y == Y
-		5: return abs(x - X) == abs(y - Y)
-		6: return (abs(x - X) == 1 and abs(y - Y) == 2) or (abs(x - X) == 2 and abs(y - Y) == 1)
-		7: return x in [0, grid.size() - 1] or y in [0, grid[x].size() - 1]
-		8: return alone_at(x, y)
+		2: return true # anywhere
+		3: return x in [0, grid.size() - 1] or y in [0, grid[x].size() - 1] # outer rim
+		4: return x == X or y == Y # rook
+		5: return abs(x - X) == abs(y - Y) # bishop
+		6: return abs(x - X) <= 1 and abs(y - Y) <= 1 # king
+		7: return (abs(x - X) == 1 and abs(y - Y) == 2) or (abs(x - X) == 2 and abs(y - Y) == 1) # knight
+		8: return alone_at(x, y) # isolate
 		_: push_error("Type does not exist"); return false

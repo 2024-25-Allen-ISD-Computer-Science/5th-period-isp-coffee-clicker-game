@@ -56,8 +56,7 @@ var upgrade_labels : Array
 #>---Upgrade Labels---<#
 
 func test():
-	var mass1 = Massint.new(100)
-	print(mass1.multiply(2).value)
+	pass
 
 # calls on startup
 # sets up all the beans
