@@ -26,9 +26,9 @@ func _init(position_type: int = 0, bean_type: int = 0, offset: float = 0.0) -> v
 func calc_multiplier(benefit: bool = true) -> float:
 	if position_type < 2:
 		return 1
-	var position_mult = 0.25 / (9 - position_type) # trickier position types -> stronger effects
+	var position_mult = 0.45 / (9 - position_type) # trickier position types -> stronger effects
 	print(position_mult)
-	var bean_mult = 0.65 / (bean_type + 1) # more valuable beans -> weaker effects
+	var bean_mult = 0.45 / (bean_type + 1) # more valuable beans -> weaker effects
 	print(bean_mult)
 	if benefit:
 		return 0.1 + position_mult + bean_mult + 1.0

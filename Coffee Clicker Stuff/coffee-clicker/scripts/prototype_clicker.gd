@@ -9,6 +9,7 @@ var beandex : int = 1 # we begin w/ excelsa, so it's not counted in the unlock p
 @onready var unlock : TextureButton = get_node("Unlock_Bean2")
 @onready var unlock_text : RichTextLabel = get_node("Unlock_Bean2/Unlock_Bean_Label")
 var map = Map.new()
+@onready var cursor_object : TextureRect 
 
 
 #>---BEAN VARS---<#
@@ -47,14 +48,18 @@ var upgrade_sprites : Array
 #>---UPGRADE ICON SPRITES---<#
 
 
-#>---Upgrade Labels---<#
+#>---UPGRADE LABELS---<#
 var upgrade_labels : Array
 @onready var excelsa_label : RichTextLabel = get_node("ScrollContainer/VBoxContainer/Upgrade_Excelsa2/Excelsa_Label")
 @onready var robusta_label : RichTextLabel = get_node("ScrollContainer/VBoxContainer/Upgrade_Robusta2/Robusta_Label")
 @onready var arabica_label : RichTextLabel = get_node("ScrollContainer/VBoxContainer/Upgrade_Arabica2/Arabica_Label")
 @onready var liberica_label : RichTextLabel = get_node("ScrollContainer/VBoxContainer/Upgrade_Liberica2/Liberica_Label")
-#>---Upgrade Labels---<#
+#>---UPGRADE LABELS---<#
 
+#>---BUILDING SHOP BUTTONS---<#
+var building_shop_buttons : Array
+@onready var building_one_button : TextureButton = get_node("Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_One")
+#>---BUILDING SHOP BUTTONS---<#
 func test():
 	pass
 
@@ -131,6 +136,9 @@ func _on_upgrade_arabica_pressed() -> void:
 func _on_upgrade_liberica_pressed() -> void:
 	upgrade_bean(liberica)
 	update_text()
+
+func _on_building_one_button_pressed() -> void:
+	print("penis")
 
 
 # unlocks beans

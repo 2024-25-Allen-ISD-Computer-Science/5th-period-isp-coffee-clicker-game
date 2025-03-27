@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cfmr7rns8wk2u"]
+[gd_scene load_steps=28 format=3 uid="uid://cfmr7rns8wk2u"]
 
 [ext_resource type="Script" path="res://scripts/prototype_clicker.gd" id="1_457p2"]
 [ext_resource type="Texture2D" uid="uid://bes05xamqkoy" path="res://Assets/Background.png" id="2_1sek0"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://1u2nrtp7xrh4" path="res://Assets/UI_Background_Long.png" id="7_k18yu"]
 [ext_resource type="Texture2D" uid="uid://cbvrq5hmv4ox2" path="res://Assets/UI_Background_Big.png" id="10_07i6x"]
 [ext_resource type="Texture2D" uid="uid://uffga3ee2i4r" path="res://Assets/Grid_Block.png" id="11_1f6te"]
+[ext_resource type="Texture2D" uid="uid://dbfvj5tj8xv70" path="res://Assets/pineapple.png" id="12_d8xjp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fld2h"]
 
@@ -384,7 +385,6 @@ mouse_filter = 2
 text = "Buildings"
 
 [node name="Building_Menu" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_left = 500.0
 offset_top = 75.0
@@ -577,7 +577,7 @@ offset_bottom = 456.0
 custom_minimum_size = Vector2(250, 100)
 layout_mode = 2
 
-[node name="Buy_Liberica_Hut" type="TextureButton" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer"]
+[node name="Buy_Building_One" type="TextureButton" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(266, 120)
 layout_mode = 2
@@ -585,6 +585,36 @@ texture_normal = ExtResource("5_n8bqk")
 texture_pressed = ExtResource("6_aqc5y")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="Building_One_Texture" type="TextureRect" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_One"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.075
+anchor_top = 0.075
+anchor_right = 0.075
+anchor_bottom = 0.075
+offset_left = 0.0499992
+offset_right = 320.05
+offset_bottom = 320.0
+scale = Vector2(0.3, 0.3)
+mouse_filter = 2
+texture = ExtResource("12_d8xjp")
+
+[node name="Building_One_Description" type="RichTextLabel" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_One"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.679
+anchor_top = -0.179
+anchor_right = 0.679
+anchor_bottom = -0.179
+offset_left = -27.614
+offset_top = 32.48
+offset_right = 61.386
+offset_bottom = 129.48
+text = "Cost:
+<val>
+Multiplier: 
+<>val"
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
@@ -597,5 +627,6 @@ stretch_mode = 0
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Arabica2" to="." method="_on_upgrade_arabica_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Liberica2" to="." method="_on_upgrade_liberica_pressed"]
 [connection signal="pressed" from="Building_Menu_Button" to="." method="_on_building_menu_button_pressed"]
-[connection signal="pressed" from="Building_Menu/Close_Building_Menu" to="." method="_on_close_building_menu_pressed"]
 [connection signal="pressed" from="Building_Menu/Close_Building_Menu" to="." method="_on_close_upgrade_menu_pressed"]
+[connection signal="pressed" from="Building_Menu/Close_Building_Menu" to="." method="_on_close_building_menu_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_One" to="." method="_on_building_one_button_pressed"]
