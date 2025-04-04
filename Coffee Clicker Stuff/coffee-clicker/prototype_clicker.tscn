@@ -433,25 +433,46 @@ custom_minimum_size = Vector2(108, 0)
 layout_mode = 2
 texture = ExtResource("11_1f6te")
 
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Building_GridBlock2" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
+
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock2"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Building_GridBlock3" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
 
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock3"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Building_GridBlock4" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
 
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock4"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Building_GridBlock5" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
+
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock5"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Building_GridBlock6" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
@@ -459,25 +480,45 @@ custom_minimum_size = Vector2(108, 0)
 layout_mode = 2
 texture = ExtResource("11_1f6te")
 
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock6"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Building_GridBlock7" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
+
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock7"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Building_GridBlock8" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
 
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock8"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Building_GridBlock9" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
 
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock9"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Building_GridBlock10" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
+
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock10"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Building_GridBlock11" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
@@ -485,25 +526,45 @@ custom_minimum_size = Vector2(108, 0)
 layout_mode = 2
 texture = ExtResource("11_1f6te")
 
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock11"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Building_GridBlock12" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
+
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock12"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Building_GridBlock13" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
 
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock13"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Building_GridBlock14" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
 
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock14"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Building_GridBlock15" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
+
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock15"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Building_GridBlock16" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
@@ -511,25 +572,45 @@ custom_minimum_size = Vector2(108, 0)
 layout_mode = 2
 texture = ExtResource("11_1f6te")
 
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock16"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Building_GridBlock17" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
+
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock17"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Building_GridBlock18" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
 
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock18"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Building_GridBlock19" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
 
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock19"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Building_GridBlock20" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
+
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock20"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Building_GridBlock21" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
@@ -537,25 +618,45 @@ custom_minimum_size = Vector2(108, 0)
 layout_mode = 2
 texture = ExtResource("11_1f6te")
 
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock21"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Building_GridBlock22" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
+
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock22"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Building_GridBlock23" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
 
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock23"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Building_GridBlock24" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
 
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock24"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Building_GridBlock25" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("11_1f6te")
+
+[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock25"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Building_Shop_Menu" type="TextureRect" parent="Building_Menu"]
 layout_mode = 0
@@ -627,6 +728,6 @@ Multiplier:
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Arabica2" to="." method="_on_upgrade_arabica_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Liberica2" to="." method="_on_upgrade_liberica_pressed"]
 [connection signal="pressed" from="Building_Menu_Button" to="." method="_on_building_menu_button_pressed"]
-[connection signal="pressed" from="Building_Menu/Close_Building_Menu" to="." method="_on_close_upgrade_menu_pressed"]
 [connection signal="pressed" from="Building_Menu/Close_Building_Menu" to="." method="_on_close_building_menu_pressed"]
+[connection signal="pressed" from="Building_Menu/Close_Building_Menu" to="." method="_on_close_upgrade_menu_pressed"]
 [connection signal="pressed" from="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_One" to="." method="_on_building_one_button_pressed"]

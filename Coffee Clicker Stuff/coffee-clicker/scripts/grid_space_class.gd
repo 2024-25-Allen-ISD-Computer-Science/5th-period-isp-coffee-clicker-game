@@ -2,21 +2,25 @@ class_name grid_block
 extends Node2D
 
 # grid block properties
-@export var x_coord : int
-@export var y_coord : int
 @export var width : int
 @export var building : Building
 @export var active : bool
+@export var node : TextureRect
+var x_coord : int
+var y_coord : int 
 
-func _init(x_coord : int, y_coord : int, building : Building, active : bool) -> void:
-	self.x_coord = x_coord
-	self.y_coord = y_coord
+func _init(building : Building, active : bool, node : TextureRect) -> void:
 	self.building = building
 	self.active = active
+	self.node = node
+	x_coord = Vector2i(node.global_position).x
+	y_coord = Vector2i(node.global_position).y
+	width = int(Vector2i(node.texture.get_width() * node.scale).x)
 
 # function to check if the mouse is in the location of the specified grid block
 # will be used in onevent when mouse is clicked and taken the global mouse position during that instance
 func _in_loc(loc_mouse : Vector2i) -> bool:
 	return loc_mouse.y in range(y_coord, y_coord + width) and loc_mouse.x in range(x_coord, x_coord + width)
 
-func 
+func _change_building(new_building : Building):
+	building = new_building
