@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cfmr7rns8wk2u"]
+[gd_scene load_steps=29 format=3 uid="uid://cfmr7rns8wk2u"]
 
 [ext_resource type="Script" path="res://scripts/prototype_clicker.gd" id="1_457p2"]
 [ext_resource type="Texture2D" uid="uid://bes05xamqkoy" path="res://Assets/Background.png" id="2_1sek0"]
@@ -12,6 +12,19 @@
 [ext_resource type="Texture2D" uid="uid://cbvrq5hmv4ox2" path="res://Assets/UI_Background_Big.png" id="10_07i6x"]
 [ext_resource type="Texture2D" uid="uid://uffga3ee2i4r" path="res://Assets/Grid_Block.png" id="11_1f6te"]
 [ext_resource type="Texture2D" uid="uid://dbfvj5tj8xv70" path="res://Assets/pineapple.png" id="12_d8xjp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3jtk8"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fld2h"]
 
@@ -115,6 +128,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_457p2")
 label = NodePath("Label")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3jtk8")
+animation = &"new_animation"
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -444,6 +461,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock2"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -453,6 +471,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock3"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -462,6 +481,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock4"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -471,6 +491,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock5"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -481,6 +502,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock6"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -490,6 +512,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock7"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -499,6 +522,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock8"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -508,6 +532,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock9"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -517,6 +542,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock10"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -527,6 +553,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock11"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -536,6 +563,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock12"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -545,6 +573,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock13"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -554,6 +583,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock14"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -563,6 +593,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock15"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -573,6 +604,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock16"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -582,6 +614,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock17"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -591,6 +624,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock18"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -600,6 +634,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock19"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -609,6 +644,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock20"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -619,6 +655,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock21"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -628,6 +665,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock22"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -637,6 +675,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock23"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -646,6 +685,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock24"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -655,6 +695,7 @@ layout_mode = 2
 texture = ExtResource("11_1f6te")
 
 [node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock25"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -728,6 +769,6 @@ Multiplier:
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Arabica2" to="." method="_on_upgrade_arabica_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Liberica2" to="." method="_on_upgrade_liberica_pressed"]
 [connection signal="pressed" from="Building_Menu_Button" to="." method="_on_building_menu_button_pressed"]
-[connection signal="pressed" from="Building_Menu/Close_Building_Menu" to="." method="_on_close_building_menu_pressed"]
 [connection signal="pressed" from="Building_Menu/Close_Building_Menu" to="." method="_on_close_upgrade_menu_pressed"]
+[connection signal="pressed" from="Building_Menu/Close_Building_Menu" to="." method="_on_close_building_menu_pressed"]
 [connection signal="pressed" from="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_One" to="." method="_on_building_one_button_pressed"]

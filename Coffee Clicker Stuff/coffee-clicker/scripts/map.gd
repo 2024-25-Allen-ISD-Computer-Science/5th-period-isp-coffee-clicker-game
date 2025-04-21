@@ -3,18 +3,27 @@ extends Resource
 
 # the map contains the positions of buildings and the coffee stand, determining which buildings are
 # where in order to calculate additional factors to bean production
+#var grid = [[Building.new(0), Building.new(0), Building.new(0), Building.new(0), Building.new(0)],
+#			[Building.new(0), Building.new(0), Building.new(0), Building.new(0), Building.new(0)],
+#			[Building.new(0), Building.new(0), Building.new(1), Building.new(0), Building.new(0)],
+#			[Building.new(0), Building.new(0), Building.new(0), Building.new(0), Building.new(0)],
+#			[Building.new(0), Building.new(0), Building.new(0), Building.new(0), Building.new(0)]] 
 
-var grid = [[Building.new(0), Building.new(0), Building.new(0), Building.new(0), Building.new(0)],
-			[Building.new(0), Building.new(0), Building.new(0), Building.new(0), Building.new(0)],
-			[Building.new(0), Building.new(0), Building.new(1), Building.new(0), Building.new(0)],
-			[Building.new(0), Building.new(0), Building.new(0), Building.new(0), Building.new(0)],
-			[Building.new(0), Building.new(0), Building.new(0), Building.new(0), Building.new(0)]] 
 			# the 5x5 map containing all spaces. the x axis increases from top to bottom, while the
 			# y axis increases from left to right
 var multipliers = [1] # array of each bean's multiplier. 1 is appended when a new bean is unlocked
 var available_builds = [] # contains the ids of any buildings that haven't yet been placed
 var placed_builds = [] # contains the ids of current placed buildings
-
+var grid_node = get_node("Building_Menu/Building_Grid_Menu/Building_Grid")
+var grid = []
+func make_grid():
+	for block in grid_node.get_children():
+		
+	var grid = []
+	for i in range(5):
+		var row = []
+		for j in range(5):
+			row.append(grid_block.new(building: Building.new(0), active: false, ))
 # returns the index combination locating the coffee stand
 func origin() -> Array:
 	for x in range(grid.size()):
