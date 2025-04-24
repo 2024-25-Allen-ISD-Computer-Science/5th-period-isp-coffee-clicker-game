@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=3 uid="uid://cfmr7rns8wk2u"]
+[gd_scene load_steps=136 format=3 uid="uid://cfmr7rns8wk2u"]
 
 [ext_resource type="Script" path="res://scripts/prototype_clicker.gd" id="1_457p2"]
 [ext_resource type="Texture2D" uid="uid://dvfrowllhnrvh" path="res://Assets/CoffeePotSpriteSheet.png" id="2_a8c04"]
@@ -116,6 +116,9 @@
 [ext_resource type="Texture2D" uid="uid://bprgjdffbx8aq" path="res://Assets/Background full 24 fixed moon/sprite_102.png" id="104_6e2l8"]
 [ext_resource type="Texture2D" uid="uid://67n6jiqtk1d8" path="res://Assets/Background full 24 fixed moon/sprite_103.png" id="105_hridq"]
 [ext_resource type="Texture2D" uid="uid://dxcdgbe1i6s6x" path="res://Assets/Background full 24 fixed moon/sprite_104.png" id="106_xuora"]
+[ext_resource type="Texture2D" uid="uid://sl764me0cj2u" path="res://Assets/Houses/middle house.png" id="117_2y2h7"]
+[ext_resource type="Texture2D" uid="uid://drwdobaynw5y3" path="res://Assets/Houses/vending appartmnents.png" id="118_y8yhu"]
+[ext_resource type="Texture2D" uid="uid://4veexqhpnj6a" path="res://Assets/Houses/twin towers.png" id="119_5x5r0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3jtk8"]
 animations = [{
@@ -1315,6 +1318,131 @@ text = "Cost:
 Multiplier: 
 <>val"
 
+[node name="Buy_Building_Two" type="TextureButton" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(266, 120)
+layout_mode = 2
+texture_normal = ExtResource("5_n8bqk")
+texture_pressed = ExtResource("6_aqc5y")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Building_Two_Texture" type="TextureRect" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Two"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.075
+anchor_top = 0.075
+anchor_right = 0.075
+anchor_bottom = 0.075
+offset_left = 0.0499992
+offset_right = 320.05
+offset_bottom = 320.0
+scale = Vector2(0.15, 0.15)
+mouse_filter = 2
+texture = ExtResource("117_2y2h7")
+
+[node name="Building_Two_Description" type="RichTextLabel" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Two"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.679
+anchor_top = -0.179
+anchor_right = 0.679
+anchor_bottom = -0.179
+offset_left = -27.614
+offset_top = 32.48
+offset_right = 61.386
+offset_bottom = 129.48
+text = "Cost:
+<val>
+Multiplier: 
+<>val"
+
+[node name="Buy_Building_Three" type="TextureButton" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(266, 120)
+layout_mode = 2
+texture_normal = ExtResource("5_n8bqk")
+texture_pressed = ExtResource("6_aqc5y")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Building_Three_Texture" type="TextureRect" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Three"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.075
+anchor_top = 0.075
+anchor_right = 0.075
+anchor_bottom = 0.075
+offset_left = 0.0499992
+offset_right = 320.05
+offset_bottom = 320.0
+scale = Vector2(0.075, 0.075)
+mouse_filter = 2
+texture = ExtResource("118_y8yhu")
+
+[node name="Building_Three_Description" type="RichTextLabel" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Three"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.679
+anchor_top = -0.179
+anchor_right = 0.679
+anchor_bottom = -0.179
+offset_left = -27.614
+offset_top = 32.48
+offset_right = 61.386
+offset_bottom = 129.48
+text = "Cost:
+<val>
+Multiplier: 
+<>val"
+
+[node name="Buy_Building_Four" type="TextureButton" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(266, 120)
+layout_mode = 2
+texture_normal = ExtResource("5_n8bqk")
+texture_pressed = ExtResource("6_aqc5y")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Building_Four_Texture" type="TextureRect" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Four"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.075
+anchor_top = 0.075
+anchor_right = 0.075
+anchor_bottom = 0.075
+offset_left = 0.0499992
+offset_right = 320.05
+offset_bottom = 320.0
+scale = Vector2(0.09, 0.09)
+mouse_filter = 2
+texture = ExtResource("119_5x5r0")
+
+[node name="Building_Four_Description" type="RichTextLabel" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Four"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.679
+anchor_top = -0.179
+anchor_right = 0.679
+anchor_bottom = -0.179
+offset_left = -27.614
+offset_top = 32.48
+offset_right = 61.386
+offset_bottom = 129.48
+text = "Cost:
+<val>
+Multiplier: 
+<>val"
+
+[node name="Cursor_Object" type="TextureRect" parent="Building_Menu"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 322.0
+offset_top = -84.9999
+offset_right = 362.0
+offset_bottom = -44.9999
+
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
@@ -1341,3 +1469,6 @@ Multiplier:
 [connection signal="pressed" from="Building_Menu/Close_Building_Menu" to="." method="_on_close_upgrade_menu_pressed"]
 [connection signal="pressed" from="Building_Menu/Close_Building_Menu" to="." method="_on_close_building_menu_pressed"]
 [connection signal="pressed" from="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_One" to="." method="_on_building_one_button_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Two" to="." method="_on_building_one_button_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Three" to="." method="_on_building_one_button_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Four" to="." method="_on_building_one_button_pressed"]

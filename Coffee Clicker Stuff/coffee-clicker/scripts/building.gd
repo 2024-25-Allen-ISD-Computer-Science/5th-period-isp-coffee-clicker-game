@@ -18,12 +18,14 @@ var bean_type: int # which bean the building affects
 var multiplier: float
 var bean_mult : float
 var building_texture : Texture2D
+var building_cost : Massint
 
-func _init(position_type: int = 0, bean_type: int = 0, mult: float = 1.0, offset: float = 0.0, texture: Texture2D = null) -> void:
+func _init(position_type: int = 0, bean_type: int = 0, mult: float = 1.0, offset: float = 0.0, building_cost: int = 0, texture: Texture2D = null) -> void:
 	self.position_type = position_type
 	self.bean_type = bean_type
 	self.multiplier = calc_multiplier()
 	self.bean_mult = mult
+	self.building_cost = Massint.new(building_cost)
 
 # calculates the strength of the building's multiplier
 func calc_multiplier(benefit: bool = true) -> float:

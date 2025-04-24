@@ -8,14 +8,13 @@ static var coffeeValue : Massint = Massint.new([1])
 var beandex : int = 1 # we begin w/ excelsa, so it's not counted in the unlock progression
 @onready var unlock : TextureButton = get_node("Unlock_Bean2")
 @onready var unlock_text : RichTextLabel = get_node("Unlock_Bean2/Unlock_Bean_Label")
-var map = Map.new(grid)
-@onready var cursor_object : TextureRect 
+@onready var cursor_object : TextureRect = $Building_Menu/Cursor_Object
 
 #>---BUILDING VARS---<#
-@onready var espresso_hut : Building = Building.new(2, 0, 2.0, 0.0, espresso_hut_sprite)
-@onready var bag_house : Building = Building.new(2, 0, 10.0, 0.0, bag_house_sprite)
-@onready var vending_apartment : Building = Building.new(2, 0, 50.0, 0.0, vending_apartment_sprite)
-@onready var sugar_towers : Building = Building.new(2, 0, 300.0, 0.0, sugar_towers_sprite)
+@onready var espresso_hut : Building = Building.new(2, 0, 2.0, 0.0, 500000, espresso_hut_sprite)
+@onready var bag_house : Building = Building.new(2, 0, 10.0, 0.0, 1000000000, bag_house_sprite)
+@onready var vending_apartment : Building = Building.new(2, 0, 50.0, 0.0,5000000000000 , vending_apartment_sprite)
+@onready var sugar_towers : Building = Building.new(2, 0, 300.0, 0.0,100000000000000000 , sugar_towers_sprite)
 #>---BUILDING VARS---<#
 
 #>---BUILDING SPRITE TEXTURE VARS---<#
@@ -26,11 +25,12 @@ var map = Map.new(grid)
 #>---BUILDING SPRITE TEXTURE VARS---<#
 
 #>---GRID VAR---<#
-var grid = [[grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock)],
-			[grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock)],
-			[grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(1), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock)],
-			[grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock)],
-			[grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock), grid_block.new(Building.new(0), $Building_Menu/Building_Grid/Building_GridBlock)]] 
+@onready var grid = [[grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock1), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock2), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock3), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock4), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock5)],
+			[grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock6), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock7), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock8), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock9), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock10)],
+			[grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock11), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock12), grid_block.new(Building.new(1), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock13), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock14), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock15)],
+			[grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock16), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock17), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock18), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock19), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock20)],
+			[grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock21), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock22), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock23), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock24), grid_block.new(Building.new(0), $Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock25)]] 
+@onready var map = Map.new(grid)
 #>---GRID VAR---<#
 
 #>---BEAN VARS---<#
@@ -124,12 +124,12 @@ func _ready() -> void:
 	robusta = Bean.new("Robusta", false, 500, 5, 5, 200, 100)
 	arabica = Bean.new("Arabica", false, 10000, 10, 10, 500, 250)
 	liberica = Bean.new("Liberica", false, 250000, 50, 50, 2500, 1250)
-	kidney = Bean.new("Kidney Bean", false, 10000000, 500, 500, 500000, 250000) #10 million UV
-	evil = Bean.new("Evil Bean", false, 250000000, 10000, 10000, 5000000, 2500000) #250 million UV
-	toe = Bean.new("Toe Bean", false, 50000000000, 1000000, 1000000, 250000000, 125000000) #50 billion UV
-	magic = Bean.new("Magic Bean", false, 2000000000000, 20000000, 20000000, 250000000, 125000000) #2 trillion UV
-	rainbow = Bean.new("Rainbow Bean", false, 100000000000000, 750000000, 750000000, 10000000000, 5000000000) #100 trillion UV
-	holbean = Bean.new("Holbean", false, 50000000000000000, 150000000000, 150000000000, 2000000000000, 1000000000000) #50 quadrillion UV
+	kidney = Bean.new("Kidney", false, 10000000, 500, 500, 500000, 250000) #10 million UV
+	evil = Bean.new("Evil", false, 250000000, 10000, 10000, 5000000, 2500000) #250 million UV
+	toe = Bean.new("Toe", false, 50000000000, 1000000, 1000000, 250000000, 125000000) #50 billion UV
+	magic = Bean.new("Magic", false, 2000000000000, 20000000, 20000000, 250000000, 125000000) #2 trillion UV
+	rainbow = Bean.new("Rainbow", false, 100000000000000, 750000000, 750000000, 10000000000, 5000000000) #100 trillion UV
+	holbean = Bean.new("Hole", false, 50000000000000000, 150000000000, 150000000000, 2000000000000, 1000000000000) #50 quadrillion UV
 	beans = [excelsa, robusta, arabica, liberica, kidney, evil, toe, magic, rainbow, holbean]
 	upgrade_icons = [excelsa_upgrade_icon, robusta_upgrade_icon, arabica_upgrade_icon, liberica_upgrade_icon, kidney_upgrade_icon, evil_upgrade_icon, toe_upgrade_icon, magic_upgrade_icon, rainbow_upgrade_icon, holbean_upgrade_icon]
 	upgrade_sprites = [excelsa_upgrade_sprite, robusta_upgrade_sprite, arabica_upgrade_sprite, liberica_upgrade_sprite, kidney_upgrade_sprite, evil_upgrade_sprite, toe_upgrade_sprite, magic_upgrade_sprite, rainbow_upgrade_sprite, holbean_upgrade_sprite]
@@ -138,7 +138,8 @@ func _ready() -> void:
 	update_text()
 
 func _process(delta) -> void:
-	pass
+	if cursor_object != null:
+		cursor_object.global_position = get_global_mouse_position()
 
 
 #>---INTERACTION FUNCTIONS---<#
@@ -217,7 +218,9 @@ func _on_upgrade_holbean_pressed() -> void:
 	update_text()
 
 func _on_building_one_button_pressed() -> void:
-	print("penis")
+	if money.greateq(espresso_hut.building_cost):
+		money = money.subtract(espresso_hut.building_cost)
+	cursor_object = $Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_One/Building_One_Texture
 
 
 # unlocks beans
@@ -280,5 +283,14 @@ func update_upgrade_text() -> void:
 	for index in beandex:
 		var sell_value = beans[index].sell_value.condensed()
 		var upgrade_cost = beans[index].upgrade_cost.condensed()
-		upgrade_labels[index].text = "%s\nCurrent Value: $%s\nUpgrade: $%s\nLevel: %s" %[beans[index].Name, sell_value, upgrade_cost, beans[index].level]
+		upgrade_labels[index].text = "%s Bean\nCurrent Value: $%s\nUpgrade: $%s\nLevel: %s" %[beans[index].Name, sell_value, upgrade_cost, beans[index].level]
+
+func update_all_building_text() -> void:
+	update_building_text("Espresso Hut", $Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_One/Building_One_Description, espresso_hut)
+	update_building_text("Bag House", $Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Two/Building_Two_Description, bag_house)
+	update_building_text("Espresso Hut", $Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Three/Building_Three_Description, vending_apartment)
+	update_building_text("Espresso Hut", $Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_One/Building_One_Description, espresso_hut)
+
+func update_building_text(buildingname: String, buildingtext: RichTextLabel, building: Building) -> void:
+	buildingtext.text = "%s\nCost: $%s\nMultiplier: %s" %[buildingname, building.building_cost, building.multiplier]
 #>---UPDATE FUNCTIONS---<#
