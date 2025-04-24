@@ -4,14 +4,12 @@ extends Node2D
 # grid block properties
 @export var width : int
 @export var building : Building
-@export var active : bool
 @export var node : TextureRect
 var x_coord : int
 var y_coord : int 
 
-func _init(building : Building, active : bool, node : TextureRect) -> void:
+func _init(building : Building, node : TextureRect) -> void:
 	self.building = building
-	self.active = active
 	self.node = node
 	x_coord = Vector2i(node.global_position).x
 	y_coord = Vector2i(node.global_position).y
@@ -24,3 +22,4 @@ func _in_loc(loc_mouse : Vector2i) -> bool:
 
 func _change_building(new_building : Building):
 	building = new_building
+	node.texture = building.texture

@@ -6,7 +6,7 @@ extends Node2D
 @export var unlocked : bool
 @export var unlock_value : Massint
 @export var sell_value : Massint
-@export var upgrade_value : int
+@export var upgrade_value : Massint
 @export var upgrade_cost : Massint
 @export var upgrade_cost_scale : int
 @export var level : int
@@ -16,7 +16,7 @@ func _init(Name : String, unlocked : bool, unlock_value : int, sell_value : int,
 	self.unlocked = unlocked
 	self.unlock_value = Massint.new(unlock_value)
 	self.sell_value = Massint.new(sell_value)
-	self.upgrade_value = upgrade_value
+	self.upgrade_value = Massint.new(upgrade_value)
 	self.upgrade_cost = Massint.new(upgrade_cost)
 	self.upgrade_cost_scale = upgrade_cost_scale
 	self.level = level
@@ -28,5 +28,5 @@ func upgrade_bean() -> void:
 	if (level % 10 == 0):
 		sell_value = sell_value.multiply(2)
 		upgrade_cost = upgrade_cost.multiply(2)
-		upgrade_value *= 2
+		upgrade_value = upgrade_value.multiply(2)
 		upgrade_cost_scale *= 4
