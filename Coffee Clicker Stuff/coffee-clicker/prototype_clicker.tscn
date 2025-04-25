@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=3 uid="uid://cfmr7rns8wk2u"]
+[gd_scene load_steps=137 format=3 uid="uid://cfmr7rns8wk2u"]
 
 [ext_resource type="Script" path="res://scripts/prototype_clicker.gd" id="1_457p2"]
 [ext_resource type="Texture2D" uid="uid://dvfrowllhnrvh" path="res://Assets/CoffeePotSpriteSheet.png" id="2_a8c04"]
@@ -116,9 +116,10 @@
 [ext_resource type="Texture2D" uid="uid://bprgjdffbx8aq" path="res://Assets/Background full 24 fixed moon/sprite_102.png" id="104_6e2l8"]
 [ext_resource type="Texture2D" uid="uid://67n6jiqtk1d8" path="res://Assets/Background full 24 fixed moon/sprite_103.png" id="105_hridq"]
 [ext_resource type="Texture2D" uid="uid://dxcdgbe1i6s6x" path="res://Assets/Background full 24 fixed moon/sprite_104.png" id="106_xuora"]
-[ext_resource type="Texture2D" uid="uid://sl764me0cj2u" path="res://Assets/Houses/middle house.png" id="117_2y2h7"]
+[ext_resource type="Texture2D" uid="uid://bd86i1qyopstp" path="res://Assets/Grid_Block_Press.png" id="116_0lxs0"]
+[ext_resource type="Texture2D" uid="uid://sl764me0cj2u" path="res://Assets/Houses/middle_house.png" id="117_2y2h7"]
 [ext_resource type="Texture2D" uid="uid://drwdobaynw5y3" path="res://Assets/Houses/vending appartmnents.png" id="118_y8yhu"]
-[ext_resource type="Texture2D" uid="uid://4veexqhpnj6a" path="res://Assets/Houses/twin towers.png" id="119_5x5r0"]
+[ext_resource type="Texture2D" uid="uid://4veexqhpnj6a" path="res://Assets/Houses/twin_towers.png" id="119_5x5r0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3jtk8"]
 animations = [{
@@ -703,7 +704,7 @@ anchor_left = 0.713542
 anchor_top = 0.277778
 anchor_right = 0.980035
 anchor_bottom = 0.978395
-scroll_vertical = 190
+scroll_vertical = 100
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
@@ -1004,260 +1005,305 @@ offset_bottom = 536.0
 scale = Vector2(0.395, 0.395)
 columns = 5
 
-[node name="Building_GridBlock1" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
-custom_minimum_size = Vector2(108, 0)
+[node name="Building_GridBlock1" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock1"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock1"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock2" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock2" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock2"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock2"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock3" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock3" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock3"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock3"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock4" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock4" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock4"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock4"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock5" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock5" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock5"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock5"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock6" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
-custom_minimum_size = Vector2(108, 0)
+[node name="Building_GridBlock6" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock6"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock6"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock7" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock7" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock7"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock7"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock8" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock8" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock8"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock8"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock9" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock9" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock9"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock9"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock10" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock10" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock10"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock10"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock11" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
-custom_minimum_size = Vector2(108, 0)
+[node name="Building_GridBlock11" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock11"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock11"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock12" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock12" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock12"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock12"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock13" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock13" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock13"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock13"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock14" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock14" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock14"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock14"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock15" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock15" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock15"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock15"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock16" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
-custom_minimum_size = Vector2(108, 0)
+[node name="Building_GridBlock16" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock16"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock16"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock17" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock17" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock17"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock17"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock18" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock18" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock18"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock18"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock19" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock19" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock19"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock19"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock20" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock20" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock20"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock20"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock21" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
-custom_minimum_size = Vector2(108, 0)
+[node name="Building_GridBlock21" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock21"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock21"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock22" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock22" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock22"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock22"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock23" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock23" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock23"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock23"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock24" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock24" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock24"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock24"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
-[node name="Building_GridBlock25" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
-texture_filter = 1
+[node name="Building_GridBlock25" type="TextureButton" parent="Building_Menu/Building_Grid_Menu/Building_Grid"]
 layout_mode = 2
-texture = ExtResource("11_1f6te")
+texture_normal = ExtResource("11_1f6te")
+texture_pressed = ExtResource("116_0lxs0")
 
-[node name="Grid_Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock25"]
+[node name="Building" type="TextureRect" parent="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock25"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 27.8481
+offset_top = 25.3165
+offset_right = 230.848
+offset_bottom = 228.316
 
 [node name="Building_Shop_Menu" type="TextureRect" parent="Building_Menu"]
 layout_mode = 0
@@ -1304,19 +1350,12 @@ texture = ExtResource("12_d8xjp")
 
 [node name="Building_One_Description" type="RichTextLabel" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_One"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.679
-anchor_top = -0.179
-anchor_right = 0.679
-anchor_bottom = -0.179
-offset_left = -27.614
-offset_top = 32.48
-offset_right = 61.386
-offset_bottom = 129.48
-text = "Cost:
-<val>
-Multiplier: 
-<>val"
+offset_left = 127.0
+offset_top = 11.0
+offset_right = 257.0
+offset_bottom = 108.0
+text = "Cost: <val>
+Multiplier: <val>"
 
 [node name="Buy_Building_Two" type="TextureButton" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer"]
 texture_filter = 1
@@ -1342,20 +1381,13 @@ mouse_filter = 2
 texture = ExtResource("117_2y2h7")
 
 [node name="Building_Two_Description" type="RichTextLabel" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Two"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.679
-anchor_top = -0.179
-anchor_right = 0.679
-anchor_bottom = -0.179
-offset_left = -27.614
-offset_top = 32.48
-offset_right = 61.386
-offset_bottom = 129.48
-text = "Cost:
-<val>
-Multiplier: 
-<>val"
+layout_mode = 0
+offset_left = 127.0
+offset_top = 11.0
+offset_right = 257.0
+offset_bottom = 108.0
+text = "Cost: <val>
+Multiplier: <val>"
 
 [node name="Buy_Building_Three" type="TextureButton" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer"]
 texture_filter = 1
@@ -1381,20 +1413,13 @@ mouse_filter = 2
 texture = ExtResource("118_y8yhu")
 
 [node name="Building_Three_Description" type="RichTextLabel" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Three"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.679
-anchor_top = -0.179
-anchor_right = 0.679
-anchor_bottom = -0.179
-offset_left = -27.614
-offset_top = 32.48
-offset_right = 61.386
-offset_bottom = 129.48
-text = "Cost:
-<val>
-Multiplier: 
-<>val"
+layout_mode = 0
+offset_left = 127.0
+offset_top = 11.0
+offset_right = 257.0
+offset_bottom = 108.0
+text = "Cost: <val>
+Multiplier: <val>"
 
 [node name="Buy_Building_Four" type="TextureButton" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer"]
 texture_filter = 1
@@ -1420,20 +1445,13 @@ mouse_filter = 2
 texture = ExtResource("119_5x5r0")
 
 [node name="Building_Four_Description" type="RichTextLabel" parent="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Four"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.679
-anchor_top = -0.179
-anchor_right = 0.679
-anchor_bottom = -0.179
-offset_left = -27.614
-offset_top = 32.48
-offset_right = 61.386
-offset_bottom = 129.48
-text = "Cost:
-<val>
-Multiplier: 
-<>val"
+layout_mode = 0
+offset_left = 127.0
+offset_top = 11.0
+offset_right = 257.0
+offset_bottom = 108.0
+text = "Cost: <val>
+Multiplier: <val>"
 
 [node name="Cursor_Object" type="TextureRect" parent="Building_Menu"]
 texture_filter = 1
@@ -1455,20 +1473,45 @@ offset_bottom = -44.9999
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Liberica2" to="." method="_on_upgrade_liberica_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Kidney" to="." method="_on_upgrade_kidney_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Kidney" to="." method="_on_upgrade_liberica_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Evil" to="." method="_on_upgrade_evil_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Evil" to="." method="_on_upgrade_liberica_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Evil" to="." method="_on_upgrade_evil_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Toe" to="." method="_on_upgrade_toe_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Toe" to="." method="_on_upgrade_liberica_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Magic" to="." method="_on_upgrade_magic_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Magic" to="." method="_on_upgrade_liberica_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Rainbow" to="." method="_on_upgrade_rainbow_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Rainbow" to="." method="_on_upgrade_liberica_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Holbean" to="." method="_on_upgrade_holbean_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Rainbow" to="." method="_on_upgrade_rainbow_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Holbean" to="." method="_on_upgrade_liberica_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Upgrade_Holbean" to="." method="_on_upgrade_holbean_pressed"]
 [connection signal="pressed" from="Building_Menu_Button" to="." method="_on_building_menu_button_pressed"]
-[connection signal="pressed" from="Building_Menu/Close_Building_Menu" to="." method="_on_close_upgrade_menu_pressed"]
 [connection signal="pressed" from="Building_Menu/Close_Building_Menu" to="." method="_on_close_building_menu_pressed"]
+[connection signal="pressed" from="Building_Menu/Close_Building_Menu" to="." method="_on_close_upgrade_menu_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock1" to="." method="_on_building_grid_block_1_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock2" to="." method="_on_building_grid_block_2_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock3" to="." method="_on_building_grid_block_3_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock4" to="." method="_on_building_grid_block_4_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock5" to="." method="_on_building_grid_block_5_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock6" to="." method="_on_building_grid_block_6_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock7" to="." method="_on_building_grid_block_7_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock8" to="." method="_on_building_grid_block_8_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock9" to="." method="_on_building_grid_block_9_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock10" to="." method="_on_building_grid_block_10_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock11" to="." method="_on_building_grid_block_11_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock12" to="." method="_on_building_grid_block_12_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock13" to="." method="_on_building_grid_block_13_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock14" to="." method="_on_building_grid_block_14_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock15" to="." method="_on_building_grid_block_15_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock16" to="." method="_on_building_grid_block_16_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock17" to="." method="_on_building_grid_block_17_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock18" to="." method="_on_building_grid_block_18_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock19" to="." method="_on_building_grid_block_19_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock20" to="." method="_on_building_grid_block_20_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock21" to="." method="_on_building_grid_block_21_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock22" to="." method="_on_building_grid_block_22_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock23" to="." method="_on_building_grid_block_23_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock24" to="." method="_on_building_grid_block_24_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Grid_Menu/Building_Grid/Building_GridBlock25" to="." method="_on_building_grid_block_25_pressed"]
 [connection signal="pressed" from="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_One" to="." method="_on_building_one_button_pressed"]
-[connection signal="pressed" from="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Two" to="." method="_on_building_one_button_pressed"]
-[connection signal="pressed" from="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Three" to="." method="_on_building_one_button_pressed"]
-[connection signal="pressed" from="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Four" to="." method="_on_building_one_button_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Two" to="." method="_on_building_two_button_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Three" to="." method="_on_building_three_button_pressed"]
+[connection signal="pressed" from="Building_Menu/Building_Shop_Menu/ScrollContainer/VBoxContainer/Buy_Building_Four" to="." method="_on_building_four_button_pressed"]

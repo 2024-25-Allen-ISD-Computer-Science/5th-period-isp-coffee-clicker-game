@@ -11,8 +11,8 @@ var grid = [[Building.new(0), Building.new(0), Building.new(0), Building.new(0),
 
 			# the 5x5 map containing all spaces. the x axis increases from top to bottom, while the
 			# y axis increases from left to right
-var multipliers = 1 # array of each bean's multiplier. 1 is appended when a new bean is unlocked
-var available_builds = [] # contains the ids of any buildings that haven't yet been placed
+var multipliers: int = 1 # array of each bean's multiplier. 1 is appended when a new bean is unlocked
+#var available_builds = [] # contains the ids of any buildings that haven't yet been placed
 var placed_builds = [] # contains the ids of current placed buildings
 
 func _init(grid: Array) -> void:
@@ -48,7 +48,7 @@ func place(build_id: Dictionary, x: int, y: int) -> void:
 		remove(x, y)
 	target.define(build_id)
 	placed_builds.append(build_id)
-	available_builds.erase(build_id)
+#	available_builds.erase(build_id)
 	update_multipliers()
 
 # moves a PLACED building from one location to another, swapping places with obstructions if
@@ -71,7 +71,7 @@ func remove(x: int, y: int) -> void:
 	var target: Building = grid[x][y]
 	if target.position_type <= 1:
 		return # can't remove empty space or the stand
-	available_builds.append(target.params())
+#	available_builds.append(target.params())
 	placed_builds.erase(target.params())
 	target.reset()
 	update_multipliers()
@@ -96,14 +96,10 @@ func alone_at(x: int, y: int) -> bool:
 func update_multipliers() -> void:
 	for x in range(grid.size()):
 		var x_strip: Array = grid[x]
-		print("ROW %s" % x)
 		for y in range(x_strip.size()):
 			var y_cell: Building = x_strip[y]
 			if check_position(y_cell.position_type, x, y):
-				print("Type %s At grid[%s][%s] in place!" % [y_cell.position_type, x, y], )
 				multipliers *= y_cell.multiplier
-			else:
-				print("Type %s At grid[%s][%s] not in place or not counted." % [y_cell.position_type, x, y], )
 
 # determines if a building is correctly positioned based on its position type
 func check_position(position_type: int, x: int, y: int, X: int = origin()[0], Y: int = origin()[1]) -> bool:

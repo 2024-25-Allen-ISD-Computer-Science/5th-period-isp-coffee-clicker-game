@@ -16,29 +16,29 @@ var position_type: int # where the building must be positioned to function (2-8 
 	# 8: isolate (must have empty space all around)
 var bean_type: int # which bean the building affects
 var multiplier: float
-var bean_mult : float
+#var bean_mult : float
 var building_texture : Texture2D
 var building_cost : Massint
 
-func _init(position_type: int = 0, bean_type: int = 0, mult: float = 1.0, offset: float = 0.0, building_cost: int = 0, texture: Texture2D = null) -> void:
+func _init(position_type: int = 0, bean_type: int = 0, multiplier: float = 1.0, offset: float = 0.0, building_cost: int = 0, texture: Texture2D = null) -> void:
 	self.position_type = position_type
 	self.bean_type = bean_type
-	self.multiplier = calc_multiplier()
-	self.bean_mult = mult
+	self.multiplier = multiplier
+	#self.bean_mult = mult
 	self.building_cost = Massint.new(building_cost)
 
 # calculates the strength of the building's multiplier
-func calc_multiplier(benefit: bool = true) -> float:
-	if position_type < 2:
-		return 1
-	#var position_mult = 0.45 / (9 - position_type) # trickier position types -> stronger effects
-	#print(position_mult)
-	#var bean_mult = 0.45 / (bean_type + 1) # more valuable beans -> weaker effects
-	#print(bean_mult)
-	if benefit:
-		return bean_mult
-	else:
-		return 1
+#func calc_multiplier(benefit: bool = true) -> float:
+	#if position_type < 2:
+		#return 1
+	##var position_mult = 0.45 / (9 - position_type) # trickier position types -> stronger effects
+	##print(position_mult)
+	##var bean_mult = 0.45 / (bean_type + 1) # more valuable beans -> weaker effects
+	##print(bean_mult)
+	#if benefit:
+		#return bean_mult
+	#else:
+		#return 1
 
 # returns the parameters that make up this building's attributes
 func params() -> Dictionary:

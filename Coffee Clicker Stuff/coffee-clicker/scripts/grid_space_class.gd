@@ -4,16 +4,16 @@ extends Node2D
 # grid block properties
 @export var width : int
 @export var building : Building
-@export var node : TextureRect
+@export var node : TextureButton
 var x_coord : int
 var y_coord : int 
 
-func _init(building : Building, node : TextureRect) -> void:
+func _init(building : Building, node : TextureButton) -> void:
 	self.building = building
 	self.node = node
 	x_coord = Vector2i(node.global_position).x
 	y_coord = Vector2i(node.global_position).y
-	width = int(Vector2i(node.texture.get_width() * node.scale).x)
+	width = int(Vector2i(node.texture_normal.get_width() * node.scale).x)
 
 # function to check if the mouse is in the location of the specified grid block
 # will be used in onevent when mouse is clicked and taken the global mouse position during that instance
